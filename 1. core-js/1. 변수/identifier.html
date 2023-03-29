@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+
+        var apple = '사과';
+        var apple = '애플';
+        console.log(apple);   //자바에서는 apple 이란 변수명을 똑같이 선언할 수 없다. 
+                              //그러나 자바스크립트는 마지막에 선언했던 걸로 인정이 된다. 이렇게 쓰는 방법은 안좋아..
+                              //애플이 출력된다.
+
+
+
+
+        var banana = '바나나';
+        var BANANA = '빠나나';
+        console.log(banana);
+        console.log(BANANA);                     //둘다 출력된다. 대소문자 철저하게 구분한다.
+
+
+        
+
+
+        var num7 = 7;                            //숫자로만 이뤄졌거나 숫자로 시작하지만 않으면 다 가능하다.
+        var n7u7m7 = 7;
+     
+
+
+
+        // var my-name = '홍길동';               //그리고 특수문자 허용X
+        var my_name = '홍길동';
+        var $my_name = '홍길동';                 //_와 $기호는 허용O
+
+        var myPhoneNumber = '01012345678'       //camelcase
+        var my_Phone_Number = '01012345678'     //snakecase
+        var MyPhoneNumber = '01012345678'       //paskalcase
+        var strMyPhoneNumber = '01012345678'    //Hungariancase 즉, 앞에 타입 붙어있음
+
+
+
+        
+
+        var 과일 = '사과';                       //한글로 변수명을 지어도 되지만 추천X
+        console.log(과일);  
+
+
+
+    </script>
+
+
+
+
+
+
+
+    
+    
+</body>
+</html>

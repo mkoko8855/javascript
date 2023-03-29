@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+
+
+</head>
+<body>
+
+    <script>
+
+
+
+        //논리 타입
+        var logical = false;
+        logical = true;
+    //  logical = True; (논리값 표현이 아니다.)
+
+        
+
+
+        
+        var apple = 3;
+        if(apple){ //자바는 논리형 조건식 작성해야됐는데..? 
+                   //스크립트에서의 3이라는 값이 있기 떄문에 true로 해석이 된다. 값이 없다면 false로 해석된다.
+            console.log('사과가 ' + apple + ' 개 있습니다.'); //즉, 3이라는 값이 있기 떄문에 true로 해석된다.
+        } else{
+            console.log('사과가 하나도 없습니다.');  //3말고 0선언하면 false로 인식한다.
+        }
+
+
+
+
+
+
+        //null : 값이 의도적으로 없다는 것을 명시할 때 사용하는 값
+        var banana = '바나나';
+        banana = null;
+        console.log(typeof banana); //출력 결과 : object
+
+
+
+
+
+        //undefined (정의되지않은) : 값을 할당하지 않은 변수에 암묵적으로 할당되는 값
+        var i;
+        console.log(i);  //출력 결과 : undefined
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

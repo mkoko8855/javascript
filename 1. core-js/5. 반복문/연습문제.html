@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        //Math.random();  난수생성가능, 0.0이상 1.0미만의 랜덤값.
+        //Math.floor(); : 내림
+        //Math.ceil();  : 올림
+        //Math.round(); : 반올림
+
+
+        //1이상 101미만
+ //       var rn1 = Math.floor((Math.random()*100) + 1);  //소수점 버리는거부터 > floor부터선언.
+
+        //1~20사이의 난수 2개를 생성해서 프롬프트로 입력받고 결과는 alert, 그만은 프로그램종료
+        
+        while (true) {
+            var n1 = Math.floor(Math.random() * 20 + 1);
+            var n2 = Math.floor(Math.random() * 20 + 1);
+            var oper = Math.floor(Math.random() * 3 + 1);
+            if (oper === 1) {
+                var input = prompt('${n1}+${n2');
+                console.log(`입력해주세요("그만"입력시 종료))`);
+                if (input == '그만') {
+                    break;
+                } else if (input == rn1 + rn2) {
+                    alert('맞았습니다.');
+                    corcnt++;
+                    cnt++;
+                } else {
+                    alert('틀렸습니다. 답은 ${n1+n2}');
+                    cnt++;
+                }
+            }
+        }
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+</html>

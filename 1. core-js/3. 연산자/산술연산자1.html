@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+
+
+
+</head>
+<body>
+
+    <script>
+    
+        console.log(27 % 5);                 //출력 결과 : 2 (나머지니까)
+
+
+        var num = 3;
+        console.log(num ** 3);              //출력 결과 : 3의 3승 = 27    즉, 제곱이다. (ES7)
+        console.log(Math.pow(num, 3));      //ES7 이전 방법.
+
+
+
+
+        //단항 산술 연산자 ++, --
+        var x = 3;
+        x++;
+        ++x;
+        x--;
+        --x;
+
+
+
+
+        //전위(prefix), 후위(postfix)연산
+        var a = 10, result;                       //변수 2개 선언한거임, result는 선언만 한 상태
+        result = a++;                             //후위연산이다. 선 연산 후 증감
+        console.log(`result: ${result}, a:${a}`); //출력 결과 : result: 10, a:11
+
+
+
+        result = ++a;  //선 증감 후 연산
+        console.log(`result: ${result}, a:${a}`); //출력 결과 : result: 12, a:12
+
+
+
+
+
+
+    </script>
+
+
+
+
+    
+</body>
+</html>
