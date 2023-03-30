@@ -16,39 +16,66 @@
 
 
         //1이상 101미만
- //       var rn1 = Math.floor((Math.random()*100) + 1);  //소수점 버리는거부터 > floor부터선언.
+        //var rn1 = Math.floor((Math.random()*100) + 1);  //소수점 버리는거부터 > floor부터선언.
 
         //1~20사이의 난수 2개를 생성해서 프롬프트로 입력받고 결과는 alert, 그만은 프로그램종료
         
-        while (true) {
-            var n1 = Math.floor(Math.random() * 20 + 1);
-            var n2 = Math.floor(Math.random() * 20 + 1);
-            var oper = Math.floor(Math.random() * 3 + 1);
-            if (oper === 1) {
-                var input = prompt('${n1}+${n2');
-                console.log(`입력해주세요("그만"입력시 종료))`);
-                if (input == '그만') {
-                    break;
-                } else if (input == rn1 + rn2) {
-                    alert('맞았습니다.');
-                    corcnt++;
-                    cnt++;
-                } else {
-                    alert('틀렸습니다. 답은 ${n1+n2}');
-                    cnt++;
-                }
+
+// Math.random(); 0.0이상 1.0미만의 랜덤값.
+// Math.floor(); 내일, Math.ceil(); 올림, Math.round(); 반올림
+// Math.random(); 0.0이상 1.0미만의 랜덤값.
+// Math.floor(); 내일, Math.ceil(); 올림, Math.round(); 반올림
+
+
+        var cCount = 0, iCount = 0;  //cCount정답횟수 iCount오답횟수
+
+        while(true) {
+
+            // 문제를 만들기 위한 정수 난수 두 개 생성
+            var rn1 = Math.floor((Math.random()*20) +1);
+            var rn2 = Math.floor((Math.random()*20) +1);
+
+            // 부호를 결정하기 위해 0 1 2의 랜덤 정수 난수 생성
+            var rn3 = Math.floor(Math.random()*3);
+
+            var realAnswer;   //플마나누기곱을 해주기 위한 변수
+            var operatorMark; //식을 만들어주기 위한 변수
+
+            if(rn3 === 0) { 
+                operatorMark = '+';
+                realAnswer = rn1 + rn2;
+            } else if(rn3 === 1) {
+                operatorMark = '-';
+                realAnswer = rn1 - rn2;
+            } else if(rn3 === 2) {
+                operatorMark = '/';
+                realAnswer = rn1 / rn2;
+            } else {
+                operatorMark = 'x';
+                realAnswer = rn1 * rn2;
+            }
+
+
+            var answer = prompt(`${rn1} ${operatorMark} ${rn2} = ???`);
+
+
+            if(answer === '그만') {
+                break;
+            }
+
+
+            if(answer == realAnswer) {
+                alert('정답입니다.');
+                cCount++; //정답시 하나씩 카운트
+            } else {
+                alert('오답입니다.');
+                iCount++; //오답시 하나씩 카운트
             }
         }
 
+        //출력
+        alert(`프로그램이 종료되었습니다. # 정답횟수: ${cCount}회, 오답 횟수: ${iCount}회`);
 
-
-
-    </script>
-
-
-
-
-
-
+</script>
 </body>
 </html>

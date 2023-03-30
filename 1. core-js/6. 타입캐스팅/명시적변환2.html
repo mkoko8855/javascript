@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+        <script>
+
+            //문자열이 아닌 값을 문자열로 변환하는 방법.
+            var a = 10, b = 20;  //b를 문자로 변환하고싶다면?
+            var result = a + String(b); //String(b) 해주면됨.
+
+
+
+            //문자열이 아닌 값을 문자열로 변환하는 2번째 방법
+            result = a.toString() + b.toString(b);
+
+            console.log(result);  //출력 결과 : 1020
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //숫자가 아닌 값을 숫자 타입으로 변환하는 방법 (정수나 실수 둘다)
+            var m = '10', n = 3.14;
+            //난 13.14의 값을 원해 그러면?
+            result = Number(m) + Number(n);
+            //위말고 이렇게 써도됨. 근데 위처럼 넘버로쓰는게 편함
+            result = parseInt(m) + parseFloat(n);  //정수는 parseInt, 실수는 parseFloat
+
+            console.log(result);  //출력 결과 : 13.14
+
+
+
+
+
+
+
+
+
+
+
+            //논리 타입이 아닌 값을 논리 타입으로 변환하는 법.
+            var t = 'Hello', f = '';  //''는 아무것도 안써준 문자열. 즉, 일단 헬로랑 둘다 문자열상태.
+            console.log(Boolean(t));  //출력 결과 : true
+            console.log(Boolean(f));  //출력 결과 : false
+            
+            //앞에 논리 반전 연산자를 쓰면 논리 타입으로 변환되는데, 논리 값도 반전된다.
+            console.log(!!'hello');    //출력 결과 : true    (!붙이면 false되고 다시 ! 하나더 붙이면 true가 된다.)
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        //암묵적 논리값 평가
+
+
+        //undefined, null, 0, NaN, '' 은 모두 false
+        //나머지는 모두 true로 인식한다.
+        //함수의 리턴, 비동기 통신의 결과값들이 정확하게 어떤 값인지 모르더라도
+        //해당 값이 띠고 있는 논리적 평가에 따라 조건문을 좀 더 수월하게 구성할 수 있다. 
+
+        //값안들어갔구나..또는 함수빠졌거나 , 매개값전달하지않았거나..이런거를 빠르게 알 수 있겠지
+
+
+
+        if(''){
+            console.log('OK1');    //''는 false라서 OK1 출력 X
+        } 
+
+
+        if('hello'){
+            console.log('OK2');    //true라서 OK2 출력 O
+        } 
+
+
+        if(undefined){ 
+            console.log('OK3');    //false라서 OK3 출력 X
+        } 
+
+
+        if(null){
+            console.log('OK4');    //false라서 OK4 출력 X
+        } 
+
+
+        if(350){
+            console.log('OK5');    //true라서 OK5 출력 O
+        } 
+
+
+        if(NaN){
+            console.log('OK6');   //false라서 OK6 출력 X
+        } 
+
+
+        if(0){
+            console.log('OK7');   //false라서 OK7 출력 X
+        } 
+
+
+        if([1, 2, 3]){
+            console.log('OK8');   //true라서 OK8 출력 O
+        } 
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
