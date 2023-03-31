@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+
+        //함수를 선언해보자
+
+        //함수의 이름은 동사적 기능이 내포되게 짓습니다.
+        //(변수는 명사적~)
+
+
+        function calcTotal(x){
+            //전달받을 값이 있으면 변수를 선언하는데, 스크립트는 x라고만 선언하면 된다.
+            //리턴 타입은 마음대로해~따로존재하지 않음 function으로시작하면됨.
+
+            console.log('함수가 호출됨!');
+            var total = 0;
+            for(var n=1; n<=x; n++){
+                total += n;
+            }
+            return total;
+        }
+
+
+
+        //함수의 호출!
+        console.log(calcTotal(10));
+        //내가 전달한 10이라는 값이 x로 전달된다.
+        //그 전달된 10 이라는 값은 함수 내부로 전달되어서
+        //for문의 x로 간다.
+        //즉, 1부터 하나씩 커지는 반복문이 완성되고
+        //total에 값이 완성되고
+        //리턴이 나와서 함수가 호출된 곳으로 돌아간다.
+        
+
+        //함수는 재활용성이 높으니 부르면 언제든지 실행이 된다.
+
+
+        //그리고 바로 1부터 50까지의 누적합을 구할 수 있겠다.
+        var result = calcTotal(50);
+        console.log(result);
+
+
+
+        console.log('--------------------------------');
+
+
+        
+        //함수 선언 더해보자
+        function add (n1, n2){  //타입 안씀(var안씀), 즉 이름만 명시
+            return n1 + n2;
+        }
+
+
+        //함수를 리터럴 방식으로 선언해보자
+        var add2 = function(n1, n2){    //이름필요없음. 왜? 변수에 담을 꺼니까
+            return n1 + n2;
+        } 
+
+        //스크립트는 함수도 객체로 인식되기에 함수 이름 안짓고 변수에 할당이 가능!
+        //부를때는 add2로 부르면 된다
+
+        
+
+
+
+
+
+
+
+        //화살표 함수 (ES6) > function 생략 가능하다
+        //선언부터
+        var add3 = (n1, n2) => {
+            return n1 + n2;
+        }
+
+
+        //화살표 함수는 이렇게도 가능
+        //var add3 = (n1, n2) => n1 + n2;  //return n1+n2;라는 (한줄이라면) 생략가능하다. 무조건 한줄 이여야 한다.
+
+
+
+
+
+
+        //함수를 호출해보자
+        console.log(add(10, 20));
+        console.log(add2(10, 20));
+        console.log(add3(10, 20));
+        //30 30 30 잘 나왔다~
+
+
+
+
+
+
+        //함수를 변수에 할당할 수 있다.
+        var ct = calcTotal;
+        var result2 = ct(200);  /*1부터 200까지의 누적합이겠지*/
+        console.log('result2: ' + result2);
+        //출력 결과 : result2 : 20100
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

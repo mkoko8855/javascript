@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        function add2(n1, n2){
+            return n1 + n2;
+        }
+
+        function add3(n1, n2, n3){
+            return n1 + n2 + n3;
+        }
+
+        function add4(n1, n2, n3, n4){
+            return n1 + n2 + n3 + n4;
+        }
+
+
+        //이런식으로 계속 늘릴 순 없잖아?
+        //더하고자하는 값을 배열로 감싸면 되겠지?
+        //가변파라미터를 사용하자.
+
+
+
+
+
+
+
+        //가변파라미터 사용
+        //n개의 정수의 합을 구하는 함수를 선언해보자
+        
+        
+        //spread : ES6 배열 문법이다.
+        function addAll(...numbers) { //...은 배열로 포장해서 내부로 넘겨줌
+            //해보기
+            console.log(typeof numbers);
+            console.log(numbers);
+            
+
+            //리턴만들어줘서 리턴으로 받아보자
+            var total = 0;
+            for(var n of numbers){  //객체는 for in, 배열은 for of
+                total+=n;
+            }    
+            return total;
+        }
+
+
+
+        //해보기 를 불러보자
+        addAll(10, 20, 30, 40, 50, 100, 1000, 100000);
+
+
+        //리턴만든거에 리턴으로 받는거를 해보자
+        var result = addAll(10, 20, 30, 40, 50, 100, 1000, 100000);
+        console.log(result);
+
+
+
+    </script>
+
+
+
+</body>
+</html>

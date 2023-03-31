@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<body>
+    
+
+    <script>
+
+
+
+        /*
+            객체의 생성 :
+
+            객체 리터럴 방식을 많이 사용한다.
+
+            클래스 없이 0개 이상의 프로퍼티(속성)으로 구성된 집합 자료 구조이다.
+
+            프로퍼티(속성)은 키와 값(밸류)의 쌍으로 구성된다. (자바의 map과 유사)
+
+            0개이상은 프로퍼티가 없을 수도 있거든..중괄호안에아무것도없다는가..그런거..
+        */
+
+
+
+
+
+        /*이게 바로 클래스 없이 썡 객체를 선언하는 방식이며, 가장 흔하다 */
+        var dog = {
+            name : '뽀삐',  
+            kind : '시츄',
+            age : 3,
+            favorite : ['산책', '간식']  /*이렇게 배열객체타입도 가능*/
+        };  
+
+
+
+
+
+        
+        var cat = {
+            name : '야옹이',
+            kind : '페르시안',
+            age : 2,
+            favorite : ['낮잠', '츄르', '실뭉치']
+        }
+
+
+
+
+        /*타입 찍어보자*/
+        console.log(typeof dog);  //출력 결과 : object
+        console.log(typeof cat);  //출력 결과 : object
+
+
+
+
+
+        //객체 프로퍼티(속성) 참조    즉, 꺼내는 법은?  >  참조연산자 .
+        
+        //이름꺼내고싶으면?
+        console.log(dog.name);  //점찍으면돼~   //출력 결과 : 뽀삐
+        console.log(cat.name);                 //출력 결과 : 야옹이
+
+
+
+        //고양이가 좋아하는 것들을 중 2번째인 것을 꺼내볼까?
+        console.log(cat.favorite[1]);
+        //다 얻고싶으면 favorite만 쓰면 되지만 요소꺼낼때는 인덱스써야됨
+
+
+
+        
+        //강아지가 좋아하는거를 하나를 더 추가하고싶어
+        dog.favorite.push('꼬리흔들기');
+        console.log(dog);
+        //출력 결과 : 산책, 간식, 꼬리흔들기
+        //근데 순서없이 나왔다. kind name..이렇게
+        //순서중요했으면 배열써야지.
+
+
+
+
+
+
+
+
+
+        console.log('-------------------------------------');
+
+
+
+
+
+
+
+
+
+        //프로퍼티(속성) 참조의 다른 방식
+        console.log(dog.kind);   //강아지의 종을 알고 싶다 (이건 원래 우리가 위에서 배웠던 방식)
+        console.log(dog['kind']);//이건 새로운 방식
+        //둘다 출력 결과가 시츄 인 것을 알 수 있다.!
+
+
+
+
+
+        //프로퍼티(속성) 값 수정
+        //값을 수정하고싶다. 강아지 나이를 잘못입력했다면?
+        dog.age = 5;   //원래 강아지 3살이잖아 5살로 바꾸자
+        cat.favorite[1] = '고등어'; //원래 츄른데 고등어로 바꿨다
+        console.log(cat);
+
+        
+
+
+
+
+
+
+        console.log('-------------------------------------');
+
+
+
+
+
+
+
+
+        //프로퍼티 동적 추가
+        //이제 객체선언할 떄 까먹어서 나중에 프로퍼티(속성)을 추가할꺼야
+        dog.owner = '김철수';  //즉, 새로운 키 값이란 onwer를 주면 된다.
+        console.log(dog);
+        //그럼 강아지에 onwer : "김철수" 가 추가된 것을 볼 수 있다.
+
+
+
+
+
+        //프로퍼티 삭제
+        //추가한 주인이 필요가없어졌어. 지워줄래.
+        delete dog.owner;
+        console.log(dog);
+
+
+
+
+
+
+
+        //반복문돌려서 객체가 가지는 것 중 뭐가있는지 보자
+        //for ~ in (ES6)  > 객체는 반복자가 없어서 자바처럼 of 불가
+        for(var key in cat){
+            console.log(`key : ${key}, value:${cat[key]}`);
+        }
+        //출력 결과
+        /*
+        key : name, value:야옹이
+        key : kine, value:페르시안
+        key : age, value:2
+        key : favorite, value:낮잠,고등어,실뭉치
+        */
+
+
+
+
+
+
+        //객체의 프로퍼티(속성) 키의 존재 유무를 확인해보자
+        //in이라는 키워드로 확인해보자~
+        
+        console.log(cat.owner); //cat은 owner가 없잖아 실행시켜보자
+        //undefined가 나온다.
+
+        //그럼,
+        var flag = 'owner' in cat;
+        console.log(flag); //해당키가존재하면 true, 없으면 false가 온다.
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

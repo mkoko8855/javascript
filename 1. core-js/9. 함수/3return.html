@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        //리턴이 없는 함수도 void로 부르기도 한다. 자바처럼..
+
+        //void 함수는 단독 호출해서 사용. 
+        //다른 함수의 인자(매개값)으로 전달이 불가능하다.
+        
+        function greetings(nick){
+
+            var badNick = ['멍청이', '바보', '쓰레기', '양아치'];
+            //나쁜 닉네임이 들어온다면 인사안할꺼야
+            if(badNick.includes(nick)){
+                console.log('그런 나쁜 별명은 안돼요');
+                return; //밑에것이 실행되면 안되니 리턴을 통해 함수 강제 종료
+            }
+            console.log(nick + '님 안녕하세요');
+        }
+
+        
+            greetings('쓰레기'); //보이드 함수 호출법
+            //var result = greetings 처럼 함수 호출하는 방법이 아님.
+            //console.log(result);   > undifined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            function operateAll(n1, n2){
+                //return n1 + n2;
+                //return n1 - n2; 리턴을 여러개 쓰는 것도 안된다.
+
+                //만약 사칙연산의 여러 값들을 보내고 싶은데?
+                return[
+                    n1+n2, n1-n2, n1*n2, n1/n2
+                ]
+                //이렇게 쓰면 배열로 리턴. 
+
+                //만약 객체로 리턴할꺼면?
+                return {
+                    plus : n1+n2,
+                    minus : n1-n2,
+                    multi : n1 * n2,
+                    divied : n1 / n2
+                }
+            }
+
+
+            //불러보자
+            var results = operateAll(10, 2);
+            console.log(results); //전체출력
+            console.log(results.plus); //덧셈결과만 뽑고싶으면 이렇게.
+            console.log(results['divide']); //나눗셈결과만 뽑고싶으면 이렇게도 가능
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
