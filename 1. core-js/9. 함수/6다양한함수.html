@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+</head>
+<body>
+    
+    <script>
+
+        //즉시 실행 함수 (정의와 동시에 실행되는 함수)
+        //따로 호출이 없다.(따로 넣어줄 건데, 이름이 없다.)
+        (function(x, y){
+            console.log(`x + y = ${x + y}`);
+        })(60, 70);   //선언과 동시에 바로 호출을 때려버림
+
+        //출력 결과 : x + y = 130
+
+
+
+
+
+
+
+
+
+
+
+        //재귀 함수(함수 내에서 자기 자신을 다시 부르는 함수)
+        //종료 조건(return)을 직접 작성해줘야 한다. 안그러면 안끝난다.
+
+        function countdown(n){ //카운트다운 해주는 선언 하나해줌
+            if(n < 0){
+                return;
+            }
+            console.log(n);
+            countdown(n-1); //즉, 5, 4, 3, 2, 1...-1..-11382까지 출력될거임
+                            //스택이 터질거임(허용용량초과로.)
+                            //break가없어서 탈출을 못하기 떄문에 리턴을 만들어주자
+                            //마이너스는 필요없으니 0까지만 만들어주자
+                            //위에서 if문써주자.
+                            //출력 결과는 5 4 3 2 1 0 까지만 출력이 된다.
+
+        }  
+
+        countdown(5); //n에 5가되고. 4, 3, 2, 1...을 마저 출력되게 해주기 위해
+
+
+
+
+
+
+
+
+
+
+
+        //재귀함수를 풀어보자
+        function factorial(n) {
+            if(n === 1){
+                return 1;
+            }
+            return n * factorial(n-1);
+            // factorial(n(6)-1)이 될거고
+            // return n * 부분은 n에 5가 들어갈테니
+            // return 5 * fac(4)
+            // return 4 * fac(3)
+            // return 3 * fac(2) 이런식으로.
+            // return 2 * fac(1).
+            //또 fac(1)이 뭔지 알아야 리턴값을주잖아?
+            //n=1이면 1을 리턴하래. 더 볼필요없으니
+            // 2*1=2 이 fac쪽으로 리턴돼서
+            // 1에서 걸리면, 1이라는 값이 부른곳인 fac(1)로 가서
+            //2*3 = 6 이걸 리턴하겠대.
+            //다시 위로 쭉쭉 올라가면서 720이 나온다.
+            // ........
+            // ........
+
+
+        }
+        console.log(factorial(6));
+        //출력 결과 : 720
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //중첩 함수
+        //함수 안에 함수가 존재하는 것을 중첩 함수라고 한다.
+        function outer() {
+            var x  = 1;
+
+            function inner(){
+                var y = 2;
+                console.log(x + y);
+            }
+            inner(); //아우터 안에서 불렀지만,
+                     //아우터 안불러서 출력은 안될거임 맨 아래서 아우터 호출해주자
+        }
+
+       // inner();  //이너를 부르는 것은 불가능
+                    //이너는 아우터가 불려지지 않으면 존재하지 않아서다.
+                    //이너는 아우터 안에서 불러야한다.
+                    
+
+       outer();        //출력 결과 : 3
+       console.log(y); //이것도 불가능. 이 코드는 이너 안에서만 확인이 가능하다.
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+</html>

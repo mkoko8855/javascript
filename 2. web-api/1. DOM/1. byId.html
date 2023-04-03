@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <ul>
+        <li id="apple">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="grape">Grape</li>
+        <li id="pine">Pine</li>
+    </ul>
+
+
+
+    <script>
+
+        //id를 통해 요소를 취득하는 방법
+        const $apple = document.getElementById('apple');
+        //getElementById를 통해 요소를 얻을 것이다.
+        //$표시는 관례이다. 노드 변수는 이름 앞에 $를 붙여야 한다.
+        //즉, 요소를 취득하겠다는 뜻이다.
+        console.log($apple);            //출력 결과 : "Apple" 을 얻어왔음.
+        console.log($apple.attributes); //애플이 가지고 있는 여러 요소들을 취득할 수 있음
+                                        //해당 요소가 가지고 있는 속성들이 많이 있다.
+
+
+
+        //요소 노드가 가지고 있는 style 속성에 대해 알아보자
+        $apple.style.fontSize = '40px'; //40픽셀로 변경할 것이다.
+        //실제로 확인해보면 40px로 변경 된 것을 알 수가 있다.
+
+
+
+
+        //바디는 어떻게해?
+        document.body.style.background = 'tomato'; //배경색을 토마토로 변경하겠다.
+
+
+
+
+
+        //없는 아이디로 취득을 하는 경우 > null이 온다.
+        const $item = document.getElementById('merong');  //일부로 없는 ID를 쳤다.
+        console.log($item);
+
+        if($item !== null){  //널이 있으니 진행되지 않겠지. 근데 위에 메롱이 아니라 바나나를 주면?
+                             //요소가 제대로 취득이 되겠지. 널이 아니니까 if문 내부의 코드가 실행이 되겠지.
+            $item.style.color = 'yellow';
+        }
+
+
+
+        
+
+
+        //요소에 id를 부여 시, 아이디 값으로 자동 전역 변수가 생성된다.
+        //겟엘리먼트로 직접 취득하고 있는데,
+        //id가 붙은 애들은 이미 id값으로 변수가 눈에 보이지 않게 선언 되어 있다.
+        //id가 grape라는 세번째 li의 값을 취득하기 위해
+        //겟엘리먼트 grape로 써도 되지만,
+        //이렇게도 쓸 수 있다.
+        grape .style.color = 'violet'; 
+        //웬만하면 요소를 겟엘리먼트로 직접 취득 한 다음 조작을 하는 것을 추천한다.
+
+
+
+
+
+
+        
+        
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

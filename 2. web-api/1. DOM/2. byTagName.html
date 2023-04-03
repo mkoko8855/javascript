@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <ul id="fruits">
+        <li id="apple">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="grape">Grape</li>
+        <li id="pine">Pine</li>
+    </ul>
+
+
+    <ol>
+        <li>야야야</li>
+        <li>왜왜왜</li>
+        <li>뭐뭐뭐</li>
+    </ol>
+
+
+
+
+    <script>
+
+        //유사 배열 객체
+        //key가 인덱스처럼 구성되어 있고, length 프로퍼티(속성)이 있음.
+
+
+        //태그네임으로 이용하여 취득해보자. s가 있고 없고의 차이가 있는데,
+        //엘리먼트바이아이디는 단수, 태그네임 메서드는 복수다(즉, 여러개가 올 확률이 있다.).
+        //즉, 엘리먼트바이아이디는 요소 하나만 취득할 수 있다.
+        const $test = document.getElementsByTagName('li');
+        console.log($test);
+        //출력 결과 : li 요소 4개 전부를 가져오는 것을 알 수 있다.
+
+
+
+
+
+
+
+        //대부분의 경우에는 문서 노드부터(document) 접근하지만
+        //이미 취득한 요소가 있는 경우에도 함수를 이용해서
+        //요소 내의 요소를 취득할 수 있다.
+
+
+
+
+        //먼저 document라는 문서 노드부터 접근하는 방법을 살펴보자
+        //ul에 아이디를 달아줘보자
+        const $ul = document.getElementById('fruits');
+        //만약 요소를 제대로 취득했다라면, $ul 요소를 통해서 요소의 자식 요소들을 지목하는 것이 가능하다.
+        //ol을 추가해서 야야야 왜왜왜 뭐뭐뭐로 대충 만들어주자
+        //그 다음 li가 3개가 추가됐으니 총7개잖아?
+        //console.log($test);를 찍어보면 7개가 찍힌다.
+
+
+
+
+        //근데 과일들만 얻고 싶으면 과일에는 fruits라는 아이디가 있어서 하나씩 얻을 수 있는데
+        //하나씩 얻으면 귀찮으니 ul을 따로 얻었었지? ul을 통해 ul 내부의 자식 요소들을 얻기 위해서다.
+        //우린 document로 시작했지만 $ul이라는 태그부터 먼저 취득을 했다.
+        const $liArray = $ul.getElementsByTagName('li'); //내가 이미취득한 $ul 안에서 li요소를 찾겠다. 라는 것이다. 즉, document라는 문서에서 찾는 것 과는 다른 방법이다.
+        //출력 결과 : 4개 나온다. (사과바나나포도파인애들)
+
+
+
+
+
+
+
+        
+        console.log($liArray);
+        console.log($liArray[0]);     //인덱스 처럼 사용 가능하다.
+        console.log($liArray.length); //렝스라는 프로퍼티도 존재하기에 길이를 얻어낼 수 있다.
+        console.log($liArray.banana); //id를 이용해서 바로 취득할 수 있다.
+
+
+
+
+
+
+
+        //반복문도 돈다.
+        for(let $ele of $liArray){  //유사배열객체를 반복문도 처리가 된다 라는 것이다. 배열에서 사용하는 of 도 쓰자
+            //li요소들이 하나씩 올 것이다.
+            $ele.style.fontStyle = 'italic'; //li요소들이 하나씩 이탤릭 폰트로 바뀔 것이다.
+        }
+
+
+
+
+
+        //일반반복문(for)문도 돈다
+        for(let i=0; i<$liArray.length; i++){
+            //키값을 전달하자
+            $liArray[i].style.color = 'red'; //실제 배열은 아니지만 배열처럼 인덱스값을 키값으로 가지는 것을 확인할 수 있다.
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

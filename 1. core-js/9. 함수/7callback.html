@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        //콜백함수를 정말 많이 쓸 것이다.
+
+        //함수의 매개변수를 통해 다른 함수의 내부로 전달되는 함수를 콜백 함수라고 하며
+        //매개변수를 통해 외부에서 콜백 함수를 전달받은 함수를 고차 함수라고 한다.
+
+        //즉, 매개변수를 통해 다시 전달된다(부른다) 가 핵심이다.
+
+
+        function showEvenNumber(n) {  
+            //전달된 n까지의 모든 짝수가 출력되게.
+            //근데 홀수도 만들고싶다? showOddNumber함수 따로 만들어줘야된다..
+            for(var i=1; i<=n; i++){  
+                if(i % 2 === 0){
+                    console.log(i);
+                }
+            }
+        }
+
+
+
+
+ //       function showOddNumber(n) {  
+            //전달된 n까지의 모든 짝수가 출력되게.
+            //근데 홀수도 만들고싶다? 만들었다. 근데 불편하다
+            //2개 선언하는게 틀린건 아닌데 하나의 함수로 처리할 수 있다면 좋겠지?
+//          for(var i=1; i<=n; i++){  
+//              if(i % 2 !== 0){
+//                 console.log(i);
+//             }
+//         }
+//     }
+
+
+
+
+
+        //일단 홀수부분 주석처리하고,
+        //delimiter는 구분자이다. > 0또는 1로주면됨
+        //0이면 짝수, 1이면 홀수 가 되겠지
+
+        //델리미터가 보내주는 것을 체크만 해주면 된다.
+
+
+        // function showEvenOrOddNumber(n, delimiter) {  
+        //     for(var i=1; i<=n; i++){  
+        //         if(i % 2 === delimiter){
+        //             console.log(i);
+        //         }
+        //     }
+        // }
+
+
+        //근데 요구사항이 더생긴다.
+        //즉, 만약 홀짝뿐아니라 3의배수일떈? 4의배수일땐? 이라는 요구조건이 늘어나면?
+        
+        
+        //2개 선언하는게 틀린건 아닌데 하나의 함수로 처리할 수 있다면 좋겠지?
+        //2개의 기능을 하나로 합쳐 줄 것이다.
+
+        //매개값을 함수에다가 하나 더 선언하면 어떨까?
+        
+
+
+        //조건문이 담은 함수를 매개값으로 할 것이다.
+
+        function showNumber(n, callback){
+            for(var i=1; i<=n; i++){
+                if(callback(i)){
+                    console.log(i);
+                }
+            }
+        }
+        
+
+
+
+
+        //1부터 10까지의 정수 중, 짝수만 걸러서 출력해라
+//       showNumber(10, function(n){
+//          return n % 2 === 0; //이 여부를. 즉, 논리값을 리턴해준다.
+
+            showNumber(10, n => n % 2 === 0); //이렇게 바로 위 2줄을 
+                                              //함수 선언을 화살표함수도 가능
+
+            //0으로 나누어떨어지면 트루, 0으로 안나눠떨어지면 폴스가 온다.
+            // function(n)부터 끝까지는 callback이 받을 것이다.
+            // 위로올라가서
+            // if(callback(i)){
+            //         console.log(i);
+            //     }
+            // 넣어줘야겠지
+            //아래 리턴값이 false면 if(callback(i)) 부분이 출력이 안되겠지
+            //반대로 true면 출력이 되겠지.
+            //그럼 짝수들만 출력이 되겠지?
+ //       })
+
+
+        showNumber(10, n => n % 2 === 0); //이렇게 함수 선언을 화살표함수도 가능
+
+
+
+
+
+
+
+
+
+
+        //그럼 1부터 200까지의 정수 중, 5의 배수이면서 10의 배수는 아닌거는?
+        showNumber(200, function(n){
+            return n % 5 === 0 && n % 10 !== 0;
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
