@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <ul id="fruits">
+        <li class="apple">Apple</li>
+        <li class="banana">Banana</li>
+        <li class="grape">Grape</li>
+    </ul>
+
+
+
+    <div id="text">
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <script>
+
+        //자식노드를 탐색하기 위해선 부모노드부터 취득을 해야겠지?
+        //즉, 노드 탐색의 기점이 되는 ul(부모) 요소를 먼저 취득해야된다.
+        
+
+        const $fruits = document.getElementById('fruits');
+        //이제 부모를 얻었으니 자식노드를 탐색해보자
+
+
+        //기준 노드의 모든 자식 노드들을 탐색.
+        const $childNodes = $fruits.childNodes;  
+
+
+        //개발자 도구로 확인해보자
+        console.log($childNodes);
+        //출력결과 : NodeList(7) > 열어보면 > 0:text 1:liapple 2:text 3:li.banana 4:text 5:li.grape 6:text
+        //text들이 중간중간 껴있는데, html보면 ul과 li사이의 공백하나, li들의 사이사이공백과 마지막공백까지 총 7개가 있다.
+        //즉, 기준 노드의 모든 자식 노드들을 탐색할땐 공백을 text로 인식해서 모두 탐색된다.
+
+
+
+
+
+
+
+
+
+
+        //텍스트를 제외하고 딱 요소 3개만 가지고 올 수 있는, 
+        //탐색 하는 속성(프로퍼티)가 무엇이냐?????
+        const $children = $fruits.children; //모든 자식노드를 탐색하지만 text(공백)은 제외해준다!
+        console.log($children); //공백(text)가 제외된 것을 알 수가 있다.
+
+
+
+
+
+
+
+
+        //이번에는 모든 자식말고 첫번째 자식노드를 탐색
+        const $firstChild = $fruits.firstChild;
+        //진짜로 첫번째 자식이 찍혔는지 확인해보자
+        console.log($firstChild); //출력 결과 : text
+        //즉, first-child는 텍스트 노드가 나올 가능성이 있다.
+
+
+
+
+
+
+
+        //그러면 공백이 제외하고 진짜 li를 얻고싶다면?
+        console.log($fruits.firstElementChild); //즉, 자식요소(요소자식) 중 첫번째.
+        console.log($fruits.lastElementChild); //즉, 자식요소(요소자식) 중 마지막.
+
+
+
+
+
+
+
+
+        //기준 노드의 자식 노드가 있는지의 여부도 확인할 수 있다.
+        //일단 위로가서 html작성하자 (자식 요소 없는 id가 text인 노드)
+        const $test = document.getElementById('test');
+        console.log($test.hasChildNodes());
+        //div엔 아무것도 안넣었으니 false가 오지 않을까? > 결과는 true이다.
+        //공백이 있으니까......
+        //hasChildNodes는 공백을 넣어놨을 떄 텍스트노드가 있다고 인식해주기 떄문에 true가 온다.
+        //그럼 이걸 쓰기가 애매하지 않을까? html쓸 떄 공백이 많이 들어가니까...
+        
+
+
+
+
+        //텍스트 노드를 제외한 요소가 있는지만 물어보고싶다면?
+        console.log($test.children.length);      //출력 결과 : 트루
+        //전체를 불린으로 감싸도되고 앞에다가 느낌표2개 넣으면 된다. 그럼 정수를 논리값으로 바꾼다.
+        console.log(!!$test.children.length);    //출력 결과 : 폴스
+        //요소가 0이면 false, 0을 제외한 나머지는 true라고 인식이 된다.
+        //자식요소가 몇갠진 몰라도 true가 있으면 하나라도 존재하는 거고 0이면 false니까 자식노드가 하나도 없구나 라고 인식함
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

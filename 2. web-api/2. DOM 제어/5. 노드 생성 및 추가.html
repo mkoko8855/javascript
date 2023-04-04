@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <ul id="fruits">
+        <li>Apple</li>
+    </ul>
+
+
+
+    <script>
+
+
+        const $fruits = document.getElementById('fruits'); // ul부터 얻어줬다.
+
+        //노드를 생성해보자(태그를생성해보자) > 생성만 하자 추가는 따로..
+
+        // 1. 요소 노드 생성
+        const $newLi = document.createElement('li'); //ul에 들어갈 li태그를 만들기만 했다.
+        
+        // 2. 텍스트 삽입
+        $newLi.textContent = 'Banana';
+
+        // 3. ul에 새로운 li노드 추가
+        $fruits.appendChild($newLi); //자식노드를 추가 한 것이다.
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

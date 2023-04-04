@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul id="fruits">
+        <li>Apple</li>
+    </ul>
+
+
+
+    <script>
+
+
+        //일단 부모요소얻자
+        const $fruits = document.getElementById('fruits');
+        //자식 요소 얻자
+        const $apple = $fruits.firstElementChild;
+        
+
+
+        //애플을 복사해보자
+        //apple 요소의 사본 생성(일단 얕은 복사부터)
+        //즉, 자기 자신 노드만 복사한다.
+        const $shallowClone = $apple.cloneNode();
+        console.log($shallowClone); //출력 결과 : <li></li>
+        //즉, text는 자식이니까 text는 복사가 안된다. 이것이 얕게 복사한 것이다.
+
+
+
+        $shallowClone.textContent = $apple.textContent; //애플의 text를 저장하겠다.
+        //그러면 Apple이라는 text글자를 복사하겠지
+        $fruits.appendChild($shallowClone);
+        //그러면 text까지 복사되어서. 즉, 추가되는 것을 볼 수 있다.
+
+
+
+
+
+
+
+
+
+
+
+
+        //애플의 사본 생성을 해보자 (이제 깊은복사해보자)
+        //깊은 복사 : 자기 자신을 포함한 모든 자손노드를 복제
+        const $deepClone = $apple.cloneNode(true); //원래 얕은복사지만 매개값으로 트루주면 깊은 복사로 변함
+        $fruits.appendChild($deepClone); //애플이 복사(추가)된다~
+
+
+
+
+
+
+
+
+        //ul의 복사
+        const $ulClone = $fruits.cloneNode(true); //트루 넣고 뺴고의 차이를 보자
+        $fruits.appendChild($ulClone);
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

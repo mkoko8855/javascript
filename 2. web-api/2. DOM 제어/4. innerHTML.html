@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="fruits">
+        <li class="apple">Apple</li>
+        </ul>
+
+    <script>
+
+
+       const $fruits = document.getElementById('fruits'); //일단 취득
+       console.log($fruits.innerHTML); //일단 찍어보자~ 어떻게 이루어져있을까
+       //출력 결과 : 애플이 잘 지정 되었다.
+
+       //노드를 추가해볼까?
+       $fruits.innerHTML += '<li class="banana">Banana</li>';
+       //기존에 애플이었는데 바나나로 바뀌었다...
+       //난 추가하려했는데?
+
+       //그럼 이어붙여야지?
+       //복합대입연산자 +를 붙여주자
+       //그럼 애플과 바나나가 둘다 출력이 된다.
+
+
+
+
+
+       //ul안에있는 노드들을 삭제해버리겠다는 의미다.
+       $fruits.innerHTML = '';
+       console.log(!!$fruits.children.length); //자식노드존재하는지안하는지 확인법 > 없으니 false가 나올 것임
+       //출력 결과 : 다 삭제가 된다.
+
+
+
+
+       //참고로 innerHTML로만 노드를 제어하지 말 것!
+       //왜? 보안과 성능에 문제가 좀 있다.
+       //HTML변환이 필요한 문자열 같은 것에만 사용하는 것이 좋다.
+       //또는, 요소 전체를 삭제하는 정도로만 사용하세요.
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

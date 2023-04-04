@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+<body>
+
+
+    
+    <div id="wrap">
+        <ul id="fruits">
+            <li class="apple">Apple</li>
+            <li class="banana">Banana</li>
+            <li class="grape">Grape</li>
+        </ul>
+    </div>
+
+
+
+    <table id="board">
+        <tr>
+            <td>A</td>
+            <td>B</td>
+        </tr>
+
+        <tr>
+            <td>C</td>
+            <td>D</td>
+        </tr>
+    </table>
+
+
+
+
+
+
+    <script>
+
+            const $banana = document.querySelector('.banana');
+            
+
+
+            //부모 노드 탐색법
+            const $parent = $banana.parentNode;
+            console.log($parent); //출력 결과 : 부모 요소가 잘 지목 되었음 > 바나나의 부모는 ul이니까.
+
+
+
+
+
+            //할아버지 노드 탐색법
+            const $grandparent = $banana.parentNode.parentNode;
+            console.log($grandparent);
+
+
+
+
+
+
+            //형제 노드 탐색법
+            //(이전 형제부터 탐색해보자)
+            const $prev = $banana.previousElementSibling;
+            console.log($prev); //li의 apple이 잘 지목이 된다.
+
+
+
+
+
+
+            //다음 형제 노드도 탐색 해보자
+            const $next = $banana.nextElementSibling;
+            console.log($next); //li의 grape가 잘 지목이 된다.
+
+
+
+
+
+            
+            //지금 next를 지목했는데(grape), 이거의 다음 요소는 없잖아?
+            //에러 안나는지 확인해보자 > 더 이상 지목할 형제가 없을 시에는 null이 온다.
+            const $next2 = $next.nextElementSibling;
+            console.log($next2);
+            //출력 결과 : null
+
+
+
+
+
+
+            //html에 테이블을 추가해보자
+            //일단 board를 먼저 얻자
+            const $board = document.getElementById('board');
+            const $tablebody = $board.children;
+            //콘솔로그로 확인하기 전에, $board의 child이면 뭐가나올까?
+            //모든 자식요소 다 탐색한다했는데, tr와 td들이 나오겠지?
+            //확인해보자
+            console.log($tablebody); //출력 결과 : tablebody밖에 안나온다.
+
+            //그래서 tr를 보고싶으면 tablebody로 지목해야한다.
+            console.log($tablebody[0].children); //이렇게 지목해야 한다.
+            //그래야 tr 2개를 얻을 수가 있을 것이다.
+
+            //즉, table 태그는 자식태그로 tablebody를 자동으로 삽입한다.
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+    
+</body>
+</html>

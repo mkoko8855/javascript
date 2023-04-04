@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <ul id="fruits">
+
+    </ul>
+
+
+
+
+
+
+    <script>
+
+        //Live DOM : 사전에 미리 렌더링되어 있는 요소 노드를 라이브 돔이라고 한다.
+        const $fruits = document.getElementById('fruits'); //부모요소부터 생성.
+
+        //li를 여러개 채울꺼니까 배열을 이용해서 과일이름을 넣어보자
+        //과일 이름 텍스트 배열
+        const fruitName = ['Apple', 'Banana', 'Grape', 'Orange'];
+
+
+        //여러개를 채울꺼니 반복문쓰자
+        for(let f of fruitName){
+            const $li = document.createElement('li'); //가상돔(버츄얼돔)인 li요소를 생성하고
+            $li.textContent = f;  //방금만든 li컨텐츠에다가 f들을 채워넣고
+            $fruits.appendChild($li); //fruits에 추가하겠다! > 이제 배열요소가 4개니 4바퀴돌거다.
+        }
+
+        //그러나 이 반복문의 문제점은 성능 이슈가 있는 방법이다.
+        //즉, 이미 활성화(해석) 완료된 Live DOM 에다가 반복해서 가상DOM을 추가하는 행위는
+        //메모리상 높은 코스트가 발생한다.
+        //활성화된 DOM을 변경 조작하는 것은 가능한한 횟수 자체를 줄여줘야 한다.
+
+
+
+
+
+
+
+
+
+
+        //그럼 더 좋은 방법은?
+        //가상의 부모 DOM (컨테이너)를 생성한다.
+        //즉, 다른 노드를 담는 임시 컨테이너 역할을 하는 가상 DOM 객체.
+        //우리는 li 4개를 채워줄거니, 4개를 담을 수 있는 컨테이너를 생성하자
+        const $frag = document.createDocumentFragment(); //가상 컨테이너 만듬
+        for(let f of fruitName){
+            const $li = document.createElement('li');  
+            $li.textContent = f;  
+            $frag.appendChild($li); 
+        }
+
+        //반복문쓰고 그 다음에 가상 부모돔에다가 채워넣은 li 4개를 라이브돔에 frag를 한번만 채워넣자.
+        $fruits.appendChild($frage);
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    <style>
+        ul > li {
+            font-size: 30px;
+        }
+
+        .fruit {
+            color:red;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+    
+
+
+    <ul id="fruits">
+        <li class="fruit">Apple</li>
+        <li class="fruit">Banana</li>
+        <li class="fruit">Grape</li>
+        <li class="fruit">PineApple</li>
+    </ul>
+
+
+
+
+    <script>
+
+        //유사배열객체인 NodeList를 리턴 받아보자
+        //리턴 받기 위해선 쿼리셀렉터ALL을 사용할꺼다
+        //const $elements = document.querySelectorAll('.fruit');
+
+        //유사 배열이 하나 더있었다. HtmlCollection을 리턴 받아보자
+        //태그네임이나 클래스네임으로 유사 배열을 받을 수 있었지
+        const $elements = document.getElementsByClassName('fruit');
+
+
+        //위 두개는 fruit를 지목했으니 같은 것이다. 일단 바로 위 한줄을 주석처리 해놓고 결과를 보자
+        //참고로 얘네들메은 배열이 아니다. 유사배열이다.
+        //let $ele = $elements.pop(); //팝은 배열메서드로, 맨 뒤에있는 요소가 튀어 나오면서 배열에서 삭제 되는 것
+        //배열이 아니기에 POP이 에러난다는 것을 알 수가 있다.
+        //주석풀고 스크립트 안의 3번쨰줄 식을 주석하고 결과를보자 > 똑같이 에러난다.
+
+
+
+
+
+
+        //유사배열 객체를 마치 배열처럼 제어하고 싶다면?
+        //순수 배열로 변경 할 수 있다.
+        const realArray = Array.from($elements); //그러면은 배열로 진짜 변경해서 사용할 수 있다.
+        //const realArray = [...$elements]; ES6문법으로, 프롬안쓰고 이거 써도됨
+        //아무튼 배열로 변했나보자. $ele가 같아지니 let $ele = $elements.pop();을 일단 주석처리하고 콘솔로 결과보자
+        let $ele = realArray.pop();
+        console.log($ele);
+        console.log(realArray);
+        //에러없이 Array(3) 이라고 뜬다. 즉, 배열로 변했다!
+
+
+
+
+        //유사배열객체 반복문 같은 경우도 배열로 바꿔서 하는 게 좋다. ...이라는 스프레드 문법쓰면 더 안정적이다.
+        for(let $e of [...$elements]){
+        //실제 배열로 바꿔놓고 돌리면 안정적이다.
+            $e.style.fontStyle = 'italic';
+        }
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

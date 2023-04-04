@@ -77,13 +77,15 @@ function inputNumber() {
     //입력값 검증 함수를 호출
     return checkNumber();
 
-}
+}                     
 
 //사용자의 입력값을 검증하는 함수
 function checkNumber() {
     if(message === secret_num){
         alert('정답입니다');
         checkCountDown();
+    } else if(message !== secret_num){
+        alert('틀렸습니다');
     }
 
    

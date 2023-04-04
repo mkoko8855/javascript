@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <ul id="fruits">
+        <li>Apple</li>
+        <li>Banana</li>
+    </ul>
+
+
+
+
+
+<script>
+
+
+    const $fruits = document.getElementById('fruits');
+
+    const $mango = document.createElement('li'); //추가는 안하고 만들기만 한 상태
+    $mango.textContent = 'Mango';
+
+
+    //교체부터 진행 해보자 (망고는 추가된 것이 아직 아님)
+    $fruits.replaceChild($mango, $fruits.firstElementChild); //교체하고자할거를 먼저 적고 교체할 거를 적자. 
+
+    
+    //삭제를 진행 해보자 
+    $fruits.removeChild($fruits.lastElementChild); //마지막 자식요소인 바나나 삭제.
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

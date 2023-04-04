@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="name" value="kim" class="user-name">  <!--이런것들이 전부 속성이다-->
+    <!-- value는 이미 인풋태그 안에 적혀있는 속성이다. -->
+
+    <script>
+
+        
+        const $input = document.querySelector('input'); //클래스나 겟엘리먼트ID나 아무걸로 해도 될듯
+
+        //type값을 얻어보자
+        console.log($input.attributes); //출력 결과 : 지목했던 요소들의 속성들이 나온다. type, id ,value, calss..
+        console.log($input.attributes[0].value); //첫번째 속성의 값은 무엇? > 타입이니까 > text라고 출력이 될 것이다.
+        console.log($input.attributes.type.value); //이것도 동일하다 .text가 나온다.
+
+
+        //이번엔 id값을 얻어보자
+        console.log($input.attributes.id.value); //name이 출력된다.
+
+        //밸류값을 얻어보자
+        console.log($input.attributes.value.value); //value가 출력된다.
+
+
+
+        //값도 바꿀 수 있다. value를 바꿔보자 > 현재 kim으로 되어 있다.
+        $input.attributes.value.value = 'lee';   //kim에서 lee로 바뀌어져 있다.
+
+
+        //타입 값도 바꿔보자
+        $input.attributes.type.value = 'password'; // text에서 ***으로 바뀌어져 있다.
+
+
+
+        //좀더편한방법이 있다. set, get Attibute.html로 가자 (2번이다)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

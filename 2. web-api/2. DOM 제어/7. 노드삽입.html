@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    
+    <ul id="fruits">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Grape</li>
+    </ul>
+
+
+    <script>
+
+        //노드 삽입 방법 중, appendChild말고 다른 방법이 있는가?
+
+
+
+        //ul을 먼저 얻어야겠지~
+        const $fruits = document.getElementById('fruits');
+
+
+        //li생성해서 추가해보자
+        const $li = document.createElement('li');
+
+
+        //text도 넣을꺼야
+        $li.textContent = 'Mango';
+
+
+        //추가할꺼야
+        //$fruits.appendChild($li); 이러면 맨 마지막에 추가될텐데 (어펜드는 맨뒤에추가하는거임)
+
+
+        //원하는 곳에 집어 넣고싶다면?
+        $fruits.insertBefore($li, $fruits.lastElementChild);
+        //기존의 후르츠의 마지막 자식이었던 Grape 이전 자리에 망고를 넣을 수 있다. (인서트비포는 누구 전에 추가해준다!)
+        
+        //주의할점 : 두 번째 매개값으로 전달된 노드는 반드시
+        //insertBefore를 호출한 노드의 자식이어야 한다.
+
+
+
+
+
+        //바나나 이전에 넣고싶어, 뭐를? 오렌지를.
+        const $li2 = document.createElement('li');
+        $li2.textContent = 'Orange';
+        
+        //오렌지를 바나나 이전에 넣고싶으면 뭘 써야할까?
+        $fruits.insertBefore($li2, document.querySelector('#fruits > li:nth-child(2)'));
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

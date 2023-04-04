@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <input type="text" id="name" value="kim" class="user-name">
+
+    <p id="text">Hello</p>
+
+
+
+
+    <script>
+
+        const $input = document.querySelector('input[type="text"]');
+
+
+        
+
+        //input의 value 속성의 값을 얻고 싶다면?
+        //$input.attributes.value.value;이렇게 얻었었는데
+        const inputValue = $input.getAttribute('value'); //얻고 싶은 속성을 적으면 된다. 즉, 밸류의 값을 달라!
+
+
+
+
+        //값을 변경해보자
+        //value속성의 값을 변경해보자
+        //아까라면 $input.attributes.value.value = '메롱'; 이랬겠지만,
+        $input.setAttribute('value', '안녕하세요'); //바꾸려고 하는 속성의 이름과 값을 적으면 된다.
+        
+
+
+
+
+
+        //html에 p태그 추가했으니 써보자
+        //새로운 속성도 세팅해볼까?
+        //p태그에 title이라는 속성을 추가하고 싶다면?
+        //p태그부터얻자
+        const $paragraph = document.getElementById('text');
+        $paragraph.setAttribute('title', '메롱');
+        //기존에 없었던건 또 추가가된다. Hello에 마우스 갖다대면 메롱이 뜬다.
+        //즉, p태그에 title="메롱" 속성이 추가가 된다!
+
+
+
+
+
+        //속성이 존재하는지 확인하는 메서드 (조건문이랑 많이씀)
+        console.log($input.hasAttribute('class')); //클래스라는 속성이 있는지 궁금하더라~   > true
+        console.log($paragraph.hasAttribute('merong')); //메롱 속성이 있니? > 당연히 없겠지 >  false
+
+        if($input.hasAttribute('class')){ //인풋태그에 클래스라는 속성이 있니?
+            $input.removeAttribute('class'); //있으면 클래스라는속성을지우겠다.
+        } else{
+            //없으면 새롭게 부여해라~ (setAttribute)
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

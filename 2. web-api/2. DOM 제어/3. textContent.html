@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <div id="greeting">Hello<span>World!</span></div>
+
+
+    
+
+    <script>
+
+        const $div = document.getElementById('greeting'); //아이디있으니 그냥 겟방식쓰자~
+        //칠드런은 요소만 되니 차일드노즈를 이용한다 왜? text노드도 포함해야하니까
+        console.log($div.childNodes[0].nodeValue); //이렇게 해야 Hello 값을 확인할 수 있다.
+
+        //근데 이건 귀찮으니까 다른 방법이 있다.
+        //텍스트로 바로 접근하게 할 수 있는 속성(프로퍼티)가 있다.
+        console.log($div.textContent); //모든 텍스트를 전부 다 가지고 올 수 있다.
+                                       //즉, Hello와 World를 가지고 올 수 있다.
+
+
+        
+
+
+        //수정해볼까?
+        $div.innerHTML = '안녕하세요~!';
+        //출력은 안녕하세요 라고 뜨는데 개발자 도구의 Elements가서 보면
+        //span이 없어진다.......
+        
+        //text컨텐츠는 수정도 되지만 마크업까지 인식해버린다...
+        //span도 살리고 싶다면 안녕하세요 안에다가 마크업을 하자
+        //즉, 안녕하세요를 innerHTML를 먹이자.
+        
+        //즉, textContent는 마크업을 제외한 텍스트 전체를 지목.
+        //그래서 텍스트 형식으로 태그를 작성해도 텍스트로 인식한다.
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

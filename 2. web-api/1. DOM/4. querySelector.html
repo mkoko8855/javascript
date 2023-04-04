@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+    <ul id="fruits">
+        <li class="fruit apple">Apple</li>
+        <li class="fruit banana">Banana</li>
+        <li class="fruit grape">Grape</li>
+        <li class="fruit pine">PineApple</li>
+    </ul>
+
+
+
+    <script>
+
+        //직접 CSS선택자를 이용해 요소를 선택할 수 있게 해주는 메서드이다.
+        //CSS지식이 있다면 정확한 방법이 되겠다.
+
+
+        const $elem = document.querySelector('.banana');  //괄호엔 선택자쓰면 된다.
+        //클래스인 점을 붙이는 방식으로 얻어 주면 된다.
+
+        const $elem2 = document.querySelector('#fruits > li:nth-child(2)'); //이렇게도 지목 가능. 즉, 바나나 지목
+
+        const $elem3 = document.querySelector('li.apple + li');  //이렇게도 지목 가능. 즉, 바나나 지목
+
+
+        const $elem4 = document.querySelector('li[class="fruit banana"]'); //이렇게도 지목가능. 즉, 바나나 지목
+
+
+        $elem.style.color = 'yellow';  //즉, 위 4가지 방식으로 색 먹이는거 가능
+
+
+
+
+        console.log('-----------------------------------------------------');
+
+
+
+
+
+        //const $element = document.querySelector('#fruits > li');
+        //console.log($element);  //선택자가 하나의 요소만 지목한게 아니라 li 4개를 지목했는데, 첫번째 요소만 먹는다.
+        
+        //선택자를 이용해서 여러 요소를 지목하고 싶다면?
+        const $element = document.querySelectorAll('#fruits > li');
+        console.log($element); //li 4개를 모두 불러 올 수 있다.
+
+
+
+        for(let $ele of $element){ //유사 객체를 포문으로 올렸고, $element가 $ele로 요소들이 전달될 것이다.
+            $ele.style.background = 'red';
+        }
+
+
+
+
+
+
+
+
+        //쿼리셀렉터에서 없는 요소를 지목하면 NULL이 온다. 겟엘리먼트아이디랑 똑같다.
+        const $test = documnet.querySelector('.peach');
+        console.log($test);
+
+        //쿼리셀렉터 올에서 없는 요소를 지목하면 NodeList[]. 즉, 빈 노드 리스트 객체(유사배열객체)가 온다(리턴됨).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+    
+
+
+
+
+
+
+
+</body>
+</html>
