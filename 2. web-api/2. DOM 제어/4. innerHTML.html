@@ -12,7 +12,7 @@
         </ul>
 
     <script>
-
+        //마크업도 먹게 하려면 inner.html
 
        const $fruits = document.getElementById('fruits'); //일단 취득
        console.log($fruits.innerHTML); //일단 찍어보자~ 어떻게 이루어져있을까
@@ -39,8 +39,8 @@
 
 
 
-       //참고로 innerHTML로만 노드를 제어하지 말 것!
-       //왜? 보안과 성능에 문제가 좀 있다.
+       //참고로 innerHTML로만 노드를 제어하지 말 것! 즉, 웬만하면 남발하지 않는걸 추천.
+       //왜? 돔을 재해석 하기 떄문에 보안과 성능에 문제가 좀 있다.
        //HTML변환이 필요한 문자열 같은 것에만 사용하는 것이 좋다.
        //또는, 요소 전체를 삭제하는 정도로만 사용하세요.
 

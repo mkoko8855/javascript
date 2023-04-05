@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -77,28 +78,40 @@ function inputNumber() {
     //입력값 검증 함수를 호출
     return checkNumber();
 
-}                     
+}
 
 //사용자의 입력값을 검증하는 함수
 function checkNumber() {
-    if(message === secret_num){
+    if(gameData.message === gameData.secret_num){
         alert('정답입니다');
-        checkCountDown();
-    } else if(message !== secret_num){
-        alert('틀렸습니다');
-    }
-
-   
+        checkCountDown();  
+        return true;
+    } else if(gameData.message > gameData.secret_num){ 
+        alert('틀렸습니다. 수가 더 작아요!')
+        gameData.max = gameData.message - 1;
+    } else {
+        alert('수를 더 높게!');
+        gameData.min = gameData.message + 1;
+    } alertCountDown(gameData.countdown);
+    return false;
 }
 
 //사용자의 카운트다운을 체크하여 승리 여부를 알려주는 함수
 function checkCountDown(countdown) {
+    if(gameData.countdown>0){
+        alert('기회 내에 성공!!');
+    }else{
+        alert('기회 내에 성공하지 못했어요');
+    }
 }
 
 
 //사용자의 남은 카운트다운 횟수를 알려주는 함수
 function alertCountDown(countdown) {
-  
+     gameData.countdown = gameData.countdown-1;
+     if(countdown>0){
+      alert('기회가 ' + gameData.countdown + ' 번 남았어요');
+    } 
 }
 
 
@@ -114,53 +127,11 @@ function alertCountDown(countdown) {
         // true가 리턴되면 프로그램 종료.
         // false가 리턴되면 게임 계속 진행. 
     }
-
 }()); 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

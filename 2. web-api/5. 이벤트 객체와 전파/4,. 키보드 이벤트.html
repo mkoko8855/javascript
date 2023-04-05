@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <input type="text">
+    <p class="msg"></p>
+
+
+
+    <script>
+        //인풋태그 내에서 사용자가 값을 입력하겠지
+        //그리고 enter키를 누른 이벤트를 감지해낼수있어야한다.
+
+
+        const $input = document.querySelector('input');
+
+        const $msg = document.querySelector('.msg');
+
+        //이제 이벤트걸자. 어디다가? 인풋태그에다가.
+        $input.addEventListener('keyup', event => { //키업 부분은 타입 적어준 것이다. 키를 눌렀다 뗐을때 이벤트 발생
+            //이제 뭘눌렀는지 궁금하니, 위 event에다가 물어보는 것이다
+            console.log(event.key); //내가 어떤키 눌렀는지 알수있음
+            //그럼 eveny.key가 엔터눌렀냐? 를 물어보자
+            if(event.key === 'Enter'){
+                //인풋태그에 입력한 입력값을 끌고와서 $msg에 넣어줄것이다.
+                $msg.textContent = event.target.value;
+                //즉, 이벤트가 진행한 요소의 값을 msg의 텍스트로 넣을것이다.
+                
+                event.target.value=''; //마치 채팅창처럼 입력했던 값은 없어지고 새로운 값이 옴
+            } else if(event.key === 'Escape'){
+                $msg.textContent = ''; //ESC를 누르면 textContent를 빈 문자열로(즉, 전부삭제) 해주겠다.
+            }
+        });
+
+
+
+        
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

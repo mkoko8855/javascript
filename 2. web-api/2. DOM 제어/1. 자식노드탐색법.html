@@ -48,7 +48,7 @@
         console.log($childNodes);
         //출력결과 : NodeList(7) > 열어보면 > 0:text 1:liapple 2:text 3:li.banana 4:text 5:li.grape 6:text
         //text들이 중간중간 껴있는데, html보면 ul과 li사이의 공백하나, li들의 사이사이공백과 마지막공백까지 총 7개가 있다.
-        //즉, 기준 노드의 모든 자식 노드들을 탐색할땐 공백을 text로 인식해서 모두 탐색된다.
+        //즉, childNodes는 기준 노드의 모든 자식 노드들을 탐색할땐 공백을 text로 인식해서 모두 탐색된다.
 
 
 
@@ -63,7 +63,7 @@
         //탐색 하는 속성(프로퍼티)가 무엇이냐?????
         const $children = $fruits.children; //모든 자식노드를 탐색하지만 text(공백)은 제외해준다!
         console.log($children); //공백(text)가 제외된 것을 알 수가 있다.
-
+        //즉, children은 공백을 제외한, child보다 상위..이겠지?
 
 
 
@@ -75,7 +75,7 @@
         const $firstChild = $fruits.firstChild;
         //진짜로 첫번째 자식이 찍혔는지 확인해보자
         console.log($firstChild); //출력 결과 : text
-        //즉, first-child는 텍스트 노드가 나올 가능성이 있다.
+        //즉, first-child는 텍스트(text) 노드가 나올 가능성이 있다.
 
 
 

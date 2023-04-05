@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    <style>
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: lightgray;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 100px; 
+        }
+
+        .red {
+            color : red;
+        }
+
+
+
+
+
+
+        .blue {
+            color:blue;
+        }
+
+        .circle{
+            border-radius: 50%;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    
+    <div class="box red">Hello</div>
+
+    <script>
+
+        //클래스를 바꿔볼 것이다.
+        //그 전에 준비를 할건데,
+        //스타일에 blue랑 circle을 만들어줬다.
+        //이제 자바스크립트로 적용할 것이다.
+
+
+        //셋어트리부트보다 쉽게 조작할 수 있다.
+        const $box = document.querySelector('.box');
+        //$box의 클래스가 뭔지 알고싶어. 근본 방법을 써보자 (어트리뷰트)
+        //console.log($box.attributes.class.value);
+        //근데 이거 좀 번거로우니 더 쉽게
+        console.log($box.getAttribute('class')); //클래스라는 속성의 값을 빠르게 얻을 수 있다.
+        //출력 결과 : box red
+
+
+
+
+        //위에꺼 필요없이 훨씬 쉬운 방법.
+        console.log($box.className);
+        //클래스네임을 얻었으니 더쉽게 조작할 수 있겠지
+
+
+        //레드를 블루로 바꿔보자
+        //원래라면 이렇게 했을 것이다
+        //$box.setAttribute('class', 'box blue');
+
+
+
+        //이제는 클래스네임을 알고 있으니 아래처럼 작성해도 레드에서 블루로 바뀐다~
+        $box.className = 'box blue';
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+        //근데 바꾸다보니 짜증이난다. 박스는 그대로 있잖아, 
+        //그리고 circle이라는 클래스이름을
+        //추가할건데, 그땐 어떻게할껀데? 마음에 안들으니 쉽게 가자.
+        //즉, 클래스네임은 다써야해서 길어지기 떄문에 오타가 날 가능성이 있다.
+
+
+
+        //프로퍼티의 값을 변경이나 추가할때, 더 좋은 방법이 있다.
+        //즉, 값을 얻을 때는 클래스네임 써도되는데 변경이나 추가할 때는
+        //classList라는 프로퍼티를 사용하는게 좋다.
+        console.log($box.classList);
+        //DOMTokenList라는 객체가 오는 것을 알 수 있다. (즉, 유사배열객체로서, 인덱스로도 가능하고 값을 바꾸는게 가볍다 라는 것을 알 수 있다.)
+        //일단 내용 확인 했고,
+
+
+
+
+        //이제 요소에 클래스를 추가해보자
+        //$box.className = 'box blue circle' 이라고 일일이 작성했어야 했지만
+        //리스트를 쓰는 거면,
+        $box.classList.add('circle');
+        //이제 circle이 추가가 됐을 것이다. (즉, 50%로 깎여서 circle이 먹힌것을 볼 수 있다.)
+
+
+
+
+        //클래스 이름을 여러개 추가할거면?
+        $box.classList.add('abc', 'def', 'ghi');
+        //여러개 한번에 가능하다.
+
+
+
+
+
+        //이번에는 요소의 특정 클래스를 교체해보자
+        $box.classList.replace('red', 'blue'); //레드를 블루로 바꿔줘 > 레드만 블루로 바꿔준다
+        //"box red circle abc def ghi" 에서 red가 blue로 바뀐다
+
+
+
+
+        //요소에 특정 클래스를 삭제
+        $box.classList.remove('cirlce');
+        //기존에 이름 중, circle 클래스가 삭제가 될 것이다.
+
+
+
+
+        //삭제도 한번에 많이 할 수 있다. 추가처럼.
+        $box.classList.remove('abc', 'def', 'ghi');
+        
+
+
+
+        //요소에 특정 클래스가 존재하는지를 확인할 수도 있다.
+        console.log($box.classList.contains('box'));
+        //true라는 값을 준다. 만약 'box'가 아닌 'red'라 했으면 없는 거니까 false가 온다.
+        //hasattribute로 있냐없냐 해도 되지만,
+        //contains 이용해도 된다.
+        
+        
+
+
+        //클래스 이름이 존재한다면 삭제, 존재하지 않는다면 추가할 때는
+        //조건문을 써야 되는데, 조건문(if-else)을 안써도 된다
+        //toggle() : 해당 클래스가 존재하면 삭제, 존재하지 않으면 추가해준다.
+        $box.classList.toggle('circle');
+        //아까 circle을 지웠으니 이렇게 적으면 추가를 해준다.
+
+
+
+        $box.classList.toggle('blue');
+        //blue는 있으니 삭제가 되면서, 확인해보면 색이 없어진 것을 확인 할 수 있다.
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>

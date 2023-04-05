@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <label>
+        <input type="checkbox">
+        <em class="message"></em>
+    </label>
+
+    <script>
+
+        const $checkbox = document.querySelector('input[type="checkbox"]');
+
+        const $em = document.querySelector('.message');
+        //하나만 지목할꺼니까 쿼리셀렉터 써도됨
+
+
+        $checkbox.addEventListener('change', (event) => {
+            //클릭을 통해 체크박스 값을 변하는거니 change 이벤트 타입을 많이 쓴다
+            //인풋도 마찬가지다. 비어있는 상태에서 글을 작성하면 그것도 change이벤트이다.
+            
+            //실제 이벤트가 일어난 요소를 확인해보자
+            //console.log(event.target)
+
+            //콘솔로 보기 싫으면 이렇게 확인해도됨
+            //if(event.target.checked){ //checked는 체크박스 or radio 버튼의 체크 유무를 확인하는 프로퍼티. > 체크되어있으면 true 아니면 false
+            //    $em.textCount = '체크됨!';
+            //} else{
+            //    $em.textCount = '체크 안됨!';
+            //}
+
+            //근데 이것도 너무 길어
+            //삼항연산자 쓰자
+            $em.textContent = e.target.checked ? '체크됨!' : '체크안됨!';
+
+        });
+        
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .root{
+            width: 500px;
+            height: 500px;
+            background: red;
+        }
+
+        .parent{
+            width: 50%;
+            height: 50%;
+            background: orange;
+        }
+
+        .child{
+            width: 50%;
+            height: 50%;
+            background: skyblue;
+        }
+    </style>
+
+
+
+
+
+
+</head>
+<body>
+    <a href="http://www.naver.com">네이버로 이동</a>
+
+    <br>
+
+    <div class="root">
+        <div class="parent">
+            <div class="child"></div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+        document.querySelector('.root').addEventListener('click', (event) => { //바로걸어버려~
+            alert('root');
+        }, true);
+
+        document.querySelector('.parent').addEventListener('click', (event) => { //바로걸어버려~
+            alert('parent');
+            event.stopPropagation(); //이벤트 전파를 막는 메서드. 아래 설명있음
+        }, true);
+
+        document.querySelector('.child').addEventListener('click', (event) => { //바로걸어버려~
+            alert('child');
+        });
+
+
+
+
+
+        //근데 전파 방향을 바꾸고(역순으로 가게끔) 싶다면?
+        //위에서 매개값을 하나씩 더주면 된다. , true를 주자.
+        //맨 마지막은 굳이 안줘도 됨.
+
+        //그럼 차일드 > 패런트 > 루트 가 아니라
+        //루트 > 패런트 >차일드 로 나온다.
+
+
+
+        //중간에 전파를 끊을 수도 있다.
+        //루트 패런트 차일드 순인데,
+        //루트 > 패런트에서 차일드로 가다가 차단시킬 수 있다~
+        //두번째 alert('parent')에다가 event.stopPropagation();을 넣자.
+        //그럼 parent까지만 창이 뜨고 child는 안뜬다.
+        
+
+
+
+
+
+
+        //a태그가 네이버로 연결 되어 있는데, 클릭했을 떄 이벤트를 발생시켜보자
+        //일단 요소부터 얻자
+        const $link = document.querySelector('a');
+        $link.addEventListener('click', event => {
+            if(!confirm('정말 이동하시겠습니까?')){ //사용자가 확인을 누르지 않았다면? 이라고 물어보는 것이다. 앞에 느낌표 있으니까.
+                //그럼 태그의 고유 기능을 막아주자
+                event.preventDefault(); //사용자가 확인이 아닌 취소를 눌렀다? false가 올텐데, !을 붙여놨으니 true가 되면서 태그의 고유 기능을 막게 된다.
+                //즉, 취소 누르면 이동을 안한다.
+            } 
+        });
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

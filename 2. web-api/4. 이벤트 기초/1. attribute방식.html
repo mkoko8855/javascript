@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">  
+
+
+<!--ctrl + , 누른 후 emmit 검색 후 맨 아래 내려가서 ko로 바꾸면 자동으로 바꿀 수 있음 -->
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <!-- 버튼을 클릭했을 떄의 이벤트 발생을 해보자 -->
+
+    <button type="button" id="btn" onclick="greetings()">클릭하세요!</button>
+    <button type="button" id="btn2" onmouseenter="greetings()">마우스를 올리세요!</button>
+    <button type="button" id="btn3" onmouseleave="greetings()">마우스를 치우세요!</button>
+
+
+    
+    <script>
+
+        //이벤트 핸들러를 하나 만들어주자 (브라우저에게 전해줄 콜백 함수)
+        //이벤트가 발생하면 나중에 불러달라 라는 것.
+        function greetings(){
+            alert('안녕하세요!');
+        };
+
+        //그리팅스 함수가 호출이 됐으면 좋겠다. 언제?
+        //먼저 클릭했을때를 보자. 클릭하세요! 를 변경해보자는 것이다.
+        //태그에 속성을 추가하는 방식으로 해보자
+        //즉, 위 css에 onclick="greetings()" 써주자
+
+
+
+
+
+        //이제 마우스를 올리세요!를 변경해보자
+        //onmouseenter="greetings()" 를 써주자
+
+
+
+
+        //이제 마우스를 치우세요!를 변경해보자
+        //onmouseleave="greetings()"   를 써주자
+
+
+
+
+        //그러나 이것들은 웬만하면 위처럼 인라인 방식으로 안쓴다. 태그가 길어지니까.
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

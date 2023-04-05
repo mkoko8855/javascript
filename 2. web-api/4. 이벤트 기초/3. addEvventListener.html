@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <button id="btn">클릭</button>
+
+
+
+    <script>
+
+        //함수부를라면 요소부터 취득해야지~
+        const $btn = document.getElementById('btn');
+
+        function hello(){
+            alert('hello');
+        };
+
+
+
+        //이벤트동작시켜보자~클릭으로할꺼야 > 어트리뷰트와 프로퍼티는 on을 붙였는데 여긴 쓰지마
+        $btn.addEventListener('click', hello); //클릭이 발생하면 hello가 출력되게~
+        //매개값으로 이벤트의 타입, 두번째는 이벤트 핸들러를 전달 해주면 된다.
+
+        
+
+        //만약에 hello 함수가 없으면? 마찬가지로 즉석에서 선언 가능하다
+        $btn.addEventListener('click', function(){
+            alert('안녕하세요~');
+        });
+
+
+        //화살표 함수도 가능하다
+        $btn.addEventListener('click', () => {
+            alert('world!');
+        });
+
+
+        //하나의 이벤트에 여러개를 addEventListener에선 걸 수 있다.
+        //즉, hello > 안녕하세요 > world 순으로 alert창이 나온다.
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

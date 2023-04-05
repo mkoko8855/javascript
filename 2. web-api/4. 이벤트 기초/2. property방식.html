@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+
+</head>
+<body>
+    
+    <button type="button" id="btn" >클릭하세요!</button>
+    <button type="button" id="btn2" >마우스를 올리세요!</button>
+    <button type="button" id="btn3" >마우스를 치우세요!</button>
+
+
+    <script>
+
+        //이벤트 핸들러 정의부터.  (이벤트가 실행하면 실행되야 하니 써주자)
+        function hello(){
+            alert('Hello!');
+        }
+
+
+        //아까운 속성을 이용했지만
+        //이번에는 요소를 먼저 취득해주자
+        const $btn = document.getElementById('btn');
+        const $btn2 = document.getElementById('btn2');
+        const $btn3 = document.getElementById('btn3');
+        //이렇게 지목(취득)을 해야 이벤트를 걸 수가 있으니까.
+
+
+        //이벤트걸자
+        //$btn.onclick = hello;
+
+
+        //근데 만약 hello라는 함수가 맨 위처럼 미리 준비되지 않았다면?
+        //함수를 즉석에서 선언해도 된다.
+        $btn.onclick = function(){
+            alert('안녕안녕하세요~!');
+        };
+
+
+        //이제 btn2를 나타내보자
+        $btn2.onmouseenter = function(){
+            alert('메롱');
+        };
+        
+
+        //btn3를 화살표 함수로 나타내보자
+        $btn3.onmouseleave = () => alert('마우스를 치웠습니다~');
+
+
+
+
+        //이벤트 핸들러를 제거해보자
+        //btn3꺼를 제거해보자
+        $btn3.onmouseleave = null;
+        //그냥 null주면 된다. 그러면 이벤트가 먹지 않는다.
+
+
+
+        //프로퍼티 방식은 자바스크립트와 분리를 해서 알아보기 쉬워서 좋지만,
+        //아쉬운 점이 있는데, 클릭이벤트로 설명하자면
+        //btn에 클릭이 발생하면 안녕안녕하세요~!가 출력이 되지만,
+        //하나의 요소에 이벤트를 여러개 등록 하고 싶을 때는 불가능하다..하나엔 하나만가능하니..
+        //하지만 이거를 해결할 수 있느 방법이 있다. 3번 폴더인 addEventListner로가자
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>

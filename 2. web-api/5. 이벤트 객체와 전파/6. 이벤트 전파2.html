@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+
+        #fruits {
+            list-style: none;
+            padding: 0;
+        }
+
+        #fruits li {
+            width: 100px;
+            cursor: pointer;
+        }
+
+        #fruits .active {
+            color: red;
+            text-decoration: underline;
+        }
+
+
+    </style>
+
+
+
+</head>
+<body>
+    
+    <ul id="fruits">
+        <li id="apple" class="active">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="grape">Grape</li>
+    </ul>
+
+    <div>선택된 과일: <em class="msg">apple</em></div>
+
+
+    <br>
+
+
+    # 새로운 과일을 추가 :
+    <input type="text" class="text-box">
+    <button id="add">추가</button>
+    
+
+
+
+    <script>
+
+
+        //li의 클릭 이벤트가 발생한다면 그곳의 value를 선택된 과일에 써줄거임
+        //3개 전부에 이벤트 걸어줄 필요는 없다.
+
+        //일단 요소부터 얻자
+        const $fruits = document.getElementById('fruits'); 
+        //ul을 얻었다. 왜? 부모 요소에 이벤트걸면 자식한테 일일이 걸어 줄 필요 없으니.
+
+
+        const $msg = document.querySelector('.msg');
+
+
+
+        const $liList = [...$fruits.children]; //즉, li 3개를 배열로 담아서 liList에 넣어줄거야~
+
+
+
+        //아래서 active선언했으니 이벤트 핸들러 함수를 만들자
+        function activate(event){
+            //이벤트 발생 타겟이 특정 요소인지를 검증하자
+            //ul에는 굳이 이벤트 발생할 필요없고 li에만 있으면 되니까 확인하려고 검증하는 것이다.
+            if(!event.target.matches('#fruits > li')){ //지금 이벤트가 발생한 타겟이 #fruits > li 가 맞나요? 라고 물어보는 것이다. matches라는 함수는 맞으면 true, 맞지 않으면 false를 준다.
+                //그럼 true가 올건데, 만약 이벤트 발생이 li가 아닌 ul이라면 false겠지.
+                //맨앞에 느낌표썼으니 매칭이 되지 않는다면으로 해석을 해야지
+                //console.log('여기는 이벤트가 발생하면 안돼!');
+                return;
+
+            };
+
+
+
+                //이제 if문 밖으로 나와서,
+                //클릭 된 곳에 active를 넣어주자
+                //그리고 기존에 active를 가지고 있는 요소에 클래스는 삭제.
+            for(let $li of $liList){
+                //toggle 메서드의 두 번째 매개값으로 논리값을 전달할 수 있는데,
+                //해당 논리값이 true로 판명이 나면 지정한 클래스를 추가하고,
+                //false로 판명이 나면 지정한 클래스를 삭제한다.
+                $li.classList.toggle('active', $li === event.target); //active라는 클래스가 없으면 추가, 있으면 삭제. > 근데 이걸론 부족하니 뒤에 매개값을 하나 더 주자(논리값을!)
+            
+
+
+                //사실 한줄로 쓰면되서 토글이 편하지만 굳이 포문쓸거면 다음과 같다.
+                //포문돌려서 쓰는거면 이렇게쓴다. 1
+                //포문은 위에있고 2
+                //if($li.classList.constains('active')){
+                //    $li.classList.remove('active');
+                //}
+            
+            
+            }
+            //포문 나와서 3
+            //event.terget.classList.add('active');
+            
+
+
+
+
+
+
+
+
+           
+            //그리고 메세지 영역에 이벤트가 발생한 과일 이름을 추가해주자
+            $msg.textContent = event.target.id; 
+            //이러면 지금 이벤트가 발생된 요소가 가지고 있는 textContent를(value, id 이런거 써도됨) 텍스트로 집어 넣게 된다.\
+            //클릭 할떄마다 그 값으로 출력이 된다!
+        };
+
+
+
+        //그 다음엔, li가 클릭될 때만 이벤트가 걸리게끔, ul에 이벤트를 등록하자
+        //ul에 이벤트 등록하자 > active라는 것을 만들어줬으니 위로가서 함수만들어주자
+        //이제 ul에 클릭들어가면 active가 들어갈거임
+        $fruits.addEventListener('click', activate);
+
+
+
+
+
+
+        //ul에 이벤트는 끝났고, 동적으로 과일을 추가하자
+        const $btn = document.getElementById('add');
+        const $textBox = document.querySelector('.text-box');
+        //사용자가 btn을 눌렀을 떄 동작을 해야 하니 btn에 클릭 이벤트를 걸자 (즉, 추가 버튼에 이벤트 등록한거임)
+        $btn.addEventListener('click', event => {
+            // li만들자
+            const $newLi = document.createElement('li'); //<li></li>
+            // text넣어주자
+            $newLi.textContent = $textBox.value; //<li>Orange</li>
+            // li들이 다 id들이 있는데, 속성을 추가하자
+            $newLi.setAttribute('id', $textBox.value.toLowerCase()); //위에 id들은 소문자고, text는 대문자니 통일된 속성을 가지게 하기 위해 로워케이스를 써주자. > 작성자가 대문자로 써도 소문자로 통일됨. 즉, <li id="orange">Orange</li>
+            
+            // 이제 ul에 마지막요소로 추가해보자~
+            $fruits.appendChild($newLi);
+            
+
+            //사용자가 새로운 과일을 또 입력할 수 있잖아?
+            //원래 있던 오렌지를 지워주면 또 입력하기 편하겠지?
+            $textBox.value = ''; //그러면 새로운 li 추가가 가능할거같다~
+            
+
+            //새로운 요소를 추가한 후, liList에 꼭 넣어줘야 한다.
+            //즉, active 추가 대상 여부를 확인하기 위해 배열에 추가해줘야한다.
+            $liList.push($newLi);
+            //add는 자바의 리스트 add 이다. push써야한다~
+        });
+
+
+
+
+            //마우스 안쓰고 엔터로 추가버튼을 눌리게 하고 싶다면?
+            //버튼 클릭과 동일한 효과 내기를 해보자는 것이다.
+            //function쓰기싫으면 화살표함수 ㄱㄱ
+            $textBox.addEventListener('keydown', (event) =>{
+                if(event.keyCode === 13){
+                    //click()은 요소를 직접 클릭한 것과 같은 효과를 준다.
+                    //클릭 이벤트가 발생할 수 있도록 유도.
+                    $btn.click();
+                } //폼 태그의 서브밋은 엔터 이벤트는 기본적으로 걸려있다. 일반적인 input은 엔터 이벤트는 직접 걸어야 한다.
+            });
+            
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+</html>

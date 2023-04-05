@@ -31,8 +31,8 @@
 
         //여러개를 채울꺼니 반복문쓰자
         for(let f of fruitName){
-            const $li = document.createElement('li'); //가상돔(버츄얼돔)인 li요소를 생성하고
-            $li.textContent = f;  //방금만든 li컨텐츠에다가 f들을 채워넣고
+            const $li = document.createElement('li'); //가상돔(버츄얼돔)인 li요소를 생성하고. 즉, 가상의 컨테이너를 만들고.
+            $li.textContent = f;  //방금만든 li컨텐츠(컨테이너)에다가 f들을 채워넣고
             $fruits.appendChild($li); //fruits에 추가하겠다! > 이제 배열요소가 4개니 4바퀴돌거다.
         }
 

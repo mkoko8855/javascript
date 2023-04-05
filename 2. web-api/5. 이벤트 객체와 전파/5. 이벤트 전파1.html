@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        #fruits {
+            padding: 50px;
+            border : 2px solid red;
+        }
+
+        #fruits > li {
+            background: yellow;
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+  
+
+        <ul id="fruits">
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Grape</li>
+        </ul>
+
+
+
+        <script>
+            // li에 이벤트를 걸어 볼 것이다.
+            // 먼저 ul 요소를 얻자
+            const $fruits = document.getElementById('fruits');
+
+            $fruits.addEventListener('click', event => {
+                //console.log('ul에 클릭 이벤트가 발생했다.');
+                //console.log('이벤트를 걸어준 타겟은: ' + event.currentTarget);
+                //console.log('실제 이벤트가 발생한 요소: ' + event.target);
+                //위3줄은 확인했으니 그냥 주석처리하고~
+              
+
+                //li를 클릭했을 때에만 경고창이 뜨길 원한다면?
+                //조건문 써주면 된다.
+                if(event.currentTarget === event.target){
+                    return; //이벤트 함수를 강제로 종료(즉, 동작안하도록)
+                } //리턴으로 강제종료했으니 else 쓸필요 없음
+                alert('요소가 클릭됨!'); //li에만 이벤트 뜰것임
+
+            }); //즉, if조건문 안썼으면 id 컨테이너 안에서 클릭하면 이벤트가 발생한다고 개발자모드에 뜬다!
+
+
+
+            //if문을 다른식으로 써보자 6번째파일로 고고
+       
+            
+
+
+
+
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
