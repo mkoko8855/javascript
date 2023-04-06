@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h2>자바스크립트 카운트</h2>
+    <input type="text" id="result" value="0" readonly> <!--값을 입력할 수 없게 막는 것이 readonly-->
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+
+
+
+
+    <script>
+
+
+        //이벤트와 innerHTML or textContent를 활용하여
+        //카운트를 누적해서 올리거나 내려주세요.
+        //0아래로는 내려가지 않게 하세요.
+    
+        const $count = document.getElementById('result');
+        const $plus = document.getElementById('plus');
+        const $minus = document.getElementById('minus');
+
+        
+        
+
+
+
+        $plus.onclick = function(){
+            //let value = $count.getAttribute //value라는 속성의 값을 얻어와서 value라는 변수에 저장할거다
+            //value++;
+            //$count.setAttribute('value', value);
+            //위는 fm방식이고,
+
+            $count.value++; //라고 쓰면 간편하다.
+        }
+
+        $minus.onclick = function(){
+            //0아래면 안되니까 그냥 value--;만 하면 안되니까.
+            if(+$count.value == 0){ //===쓰면 안되고 타입까지 일치하는지 봐줘야한다.
+                alert('0 미만으로 내릴 수 없습니다.');
+                return;
+            }
+            $count.value--;
+        }
+
+
+
+
+       
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

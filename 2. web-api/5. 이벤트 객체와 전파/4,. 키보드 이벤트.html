@@ -28,7 +28,7 @@
             //이제 뭘눌렀는지 궁금하니, 위 event에다가 물어보는 것이다
             console.log(event.key); //내가 어떤키 눌렀는지 알수있음
             //그럼 eveny.key가 엔터눌렀냐? 를 물어보자
-            if(event.key === 'Enter'){
+            if(event.key === 'Enter'){ //(확인을 하고 정확하게 뒤에꺼를 쓰자 enter면안되니까.)
                 //인풋태그에 입력한 입력값을 끌고와서 $msg에 넣어줄것이다.
                 $msg.textContent = event.target.value;
                 //즉, 이벤트가 진행한 요소의 값을 msg의 텍스트로 넣을것이다.
