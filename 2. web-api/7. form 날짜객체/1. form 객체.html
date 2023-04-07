@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <form action="#" name="regForm">
+
+        아이디: <input type="text" name="id"> <br> <!--값을 끌고올때 name태그에서 끌고와야한다.-->
+        비밀번호: <input type="password" name="pw"> <br>
+        번호:
+        <div>
+            <select name="phone"> <!--셀렉트는 옵션에 value를 지정하지 않으면 010 같은 text값이 뜬다. 얘는 꼭 밸류가 필요가 없긴하다. 사용자의 입력값을 넘겨야될꺼면 value가 필요하다.-->
+                <option>010</option>
+                <option>011</option>
+                <option>018</option>
+            </select>
+            - <input type="text" name="phone2">
+            - <input type="text" name="phone3">
+        </div>
+
+        자기소개: <br>
+        <textarea name="intro" cols="50" rows="5"></textarea>
+                  <br>
+
+        분야:
+        <input type="checkbox" name="inter">Java
+        <input type="checkbox" name="inter">DB
+        <input type="checkbox" name="inter">Jsp
+        <input type="checkbox" name="inter">JavaScript
+
+
+        <!--<input type="submit" value="회원가입">  말고도 버튼태그로도쓸수있다. -->
+        <button type="button" id="regist" onclick="check()">가입</button> 
+        <!--폼 태그 안에서 버튼의 타입을 명시하지 않으면 자동으로 submit으로 인식함
+            즉, <button>가입</button>이라고 쳐도 동작을 한다.
+            그러나 좋은것이 아니다. 사용자의 입력 양식이 정확했는지 검토를 하고 submit을 할라했다.
+            입력 양식이 제대로 되지 않는다면 짤라야지. id작성하지 않았는데 가입 눌러서 되면 어떻게해.
+            그렇기 때문에 submit이 바로 발생하면 안된다. 
+            그래서 from태그 안에서의 깡통버튼은 <button type="button">가입</button> 이런식으로 타입을 써줘야 한다. -->
+    
+            
+        <input type="reset" value="초기화"> <!--사용자가 입력한 것들을 다 지워준다-->
+    
+    
+        </form>
+
+
+
+
+    <script>
+
+        function check(){
+            console.log('check 함수 발동!'); //가입 버튼 누르면 콘솔로그가 뜨는지 체크부터하자
+        //폼태그는 인풋태그가많다. 
+        //폼태그는 쿼리셀렉터 이용 안하고
+        //폼태그의 name을 작성해놓으면 document에서 form으로 바로 접근이 가능하다.
+        //즉, 바디태그처럼 따로 요소를 취득하지 않아도 된다.
+        const $form = document.regForm; //즉, 폼태그의 name을 쓰면 취득이 된다. (즉, 지금취득했음)
+        //접근방식은 바로 위처럼 document.폼이름.인풋이름 으로 접근한다.
+        //확인해보자
+        console.log($form); //즉, 폼태그에 name달아놓으면 요소를 취득할 필요가 없고 바로 name으로 내부 요소들의 접근이 가능하다
+  
+        //입력양식검증을 해보자
+        //아이디 입력창이 혹시라도 비어있다면?
+        if($form.id.value === ''){ //굳이 인풋요소안쓰고 id라고 바로먹어도됨
+            alert('아이디는 필수값입니다.');
+            $form.id.focus(); //커서가 아이디창으로 이동한다.
+            return; //체크 함수 맨 마지막에 submit을 진행해줄껀데, 입력양식 제공해야 회원가입 같은걸 해줄꺼니까. 근데 문제가 생기면 멈춰줘야하니 return으로 체크 함수를 강제 종료. 즉, 리턴의 의미는 입력값이 마음에 들지 않기 때문에 이벤트 강제 종료.
+        } else if($form.id.value.length < 4){ //아이디 입력 폼이 4글자가 안된대..
+            alert('아이디는 4글자 이상 입력해야 합니다.');
+            $form.id.focus();
+            return;
+        } else if($form.pw.value === ''){  //비밀번호도 그냥 넘기면 안되기 떄문에
+            alert('비밀번호는 필수입니다.');
+            $form.pw.focus();
+            return;
+        } else if($form.pw.value.length < 8){ //7글자까지는 잘못된 비밀번호 길이야
+            alert('비밀번호는 최소 8글자 이상으로 입력하세요!');
+            $form.pw.focus();
+            return;
+        } else{ //여기 엘스왔으면, 위에는 잘 지켰다는 얘기지. 이제 체크박스 판단하자.
+                //하나라도 체크했는지 확인해야겠지
+                //위로가서 focus부터 주자. 이건 다시 입력할 때 편하라고 해줬다.
+                //console.log($form.inter); //일단 체크박스 찍어보고 개발자모드가보자
+                //document.getElementsByName('inter').children; //얘는 바로윗줄 코드와 똑같은 얘기다.
+                let flag = false; //하나라도 체크가 되어있으면 true로 바꾸고 반복문 탈출할꺼다. 즉, 플래그가 트루로 바꼈다는건 뭐라도 하나라도 체크가 되어 있다는 것이다.
+                //플래그변수하나선언하고 반복문돌리자
+                for(let $ele of [...$form.inter]){
+                    if($ele.checked){ //체크가 되어 있다면
+                        flag = true;  //즉시 플래그를 true로 바꾸고
+                        break; //나가자
+                    }
+                }
+                //반복문 나왓는데 플래그가 false다? 그럼 트루가 한번도 일어나지 않았다는건 체크가 하나도 안되있다.
+                if(!flag){ //체크하나는해야지~
+                    alert('분야를 한 개 이상 체크하세요!');
+                    return;
+
+                    //이것까지 통과했으면 내가 걸었던 조건은 다 만족을 한다.
+                    //그러면 이제 submit처리를 해줘야지
+                    //근데 사용자가 실수로 뭔가 잘못입력했는데 가입버튼눌러서 가입이 바로 진행되어버리면 안되니
+                    //한번더 물어보자
+                }
+        }
+
+        if(confirm('회원가입 하시겠습니까?')){ //컨텀함수의 리턴값을 if문의 조건식으로 사용할거다. 컨펌이 발동되어서 메시지 창이 뜰거고, 즉 트루가 온다면 동작되고 취소를 누르면 false가 오겠지 
+            //트루면 회원가입 하려는 거니까
+            $form.submit();
+        }else{
+            alert('회원 가입을 취소합니다.');
+            return;
+        }
+
+    
+
+
+
+
+
+    }
+        
+
+
+
+
+
+
+
+
+
+    
+        /*
+            value - 값을 반환.
+            checked - 체크되어있다면 true, 체크되어있지않다면 false
+            disabled - 비활성화라면 (되어있다면) true, 그렇지 않으면 false
+            length - 요소의 길이 반환.
+            focus() - 요소의 포커싱 (요거 사용하면 사용자가 비밀번호가 잘못입력했어. alert으로 경고띄우는데, 비밀번호 입력란에 커서대주면 사용자가 작성하기 편하겠지.)
+            submit() - form 내부 입력 양식 제출(action 경로로 전송한다)
+        */
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

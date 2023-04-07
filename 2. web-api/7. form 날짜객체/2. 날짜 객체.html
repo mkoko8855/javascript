@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //객체생성
+        //변수하나 생성해서 객체생성해보자
+
+        const date = new Date();    //오늘 날짜를 가진 객체 생성완료
+        console.log(date.getTime()); //출력 결과 : Fri Apr 07 2023 12:32:40 GMT+0900 (한국 표준시)
+                                     //겟타임 함수를 쓰면 날짜를 밀리초로 나타내준다. 출력 결과 : 1680838525778
+
+        
+        //임의의 시간을 작성해보자
+        const millis = 1573735023000;
+        const day = new Date(millis); //데이트 객체 새로 생성한 후에 millis로 매개값으로 전달하면 밀리초가 가르키는 날짜를 얻을 수 있다.
+        console.log(day); //출력 결과 : Thu Nov 14 2019 21:37:03 GMT+0900 (한국 표준시)
+
+
+        //연 월 일 시 분 초를 따로 얻고싶을 수 있잖아. 메서드를 알아보자
+        console.log(date); //확인을 위해 데이트 찍어놓고
+        console.log(date.getFullYear()); //년 만 얻을 수 있다.
+        console.log(date.getMonth());    //월
+        console.log(date.getDate());     //일
+        console.log(date.getHours());    //시
+        console.log(date.getMinutes());  //분
+        console.log(date.getSeconds());  //초
+        console.log(date.getDay());      //요일
+        //일은 +1을 해줘야 제대로된 일로 출력이 된다. 일 시 분 초 잘 나온다.
+        //요일의 5라는 것은 금요일이다. (인덱스로처리됨~)
+        //스위치문쓸떄가 있지않을까..
+
+
+
+        //예시를 들어보자
+        //오늘 날짜 - 특정 날짜  를 하면, 이 사이의 간격이 얼마만큼 흘렀는지 계산해보자
+        //댓글같은거 표현할 떄 이 로직을 많이 사용한다.
+        //지금시간에서 댓글단 시간을 빼는거 같은 것과 같은 경우다.
+
+        //일단 날짜사이의 갭을 구하기 위해 (일단 밀리초로빼주자)
+        const gap = date.getTime() - millis;
+        console.log(gap);
+
+
+        let time;
+        //만약에 갭이라는 값이 60 * 60 (초단위계산 > 1분이 60개모임 > 1시간이 24개모이면 하루 >
+        if(gap < 60 * 60 * 24 * 1000){  //1일 전  
+            if(gap < 60 * 60 * 1000){   //1시간 보다 시간이 안됐니 라고 물어보는것과 같다.         //특정 날짜를 뻈는데 하루가 안됬대. 즉, 작대. 즉, 갭이 하루가 안됬대. 그럼 좀더 파고들자
+                time = '방금 전';
+            } else { //1시간을 넘었다는 거니까
+                time = gap / (60 * 60 * 1000) + '시간 전'; //즉, 밀리초기 떄문ㅇ ㅔ천을 곱해준거고 시간으로 나눠줄꺼기 때문에 1분(60) * 1시간(60) 으로 했다.
+            }
+        } else{ //1일 이상이 넘어간 경우(하루 이상이 지난 경우)
+            const checkTime = new Date(gap); //날짜 간격인 갭을 날짜화(checkTime)시켰다.
+            console.log(checkTime); //아깐2019년. 지금날짜까지 3년5개월정도흐름..
+
+            //연을 구하고 싶다 ? 1973을 끌고와서 1970이랑 뺴주면 된다. 몇년전인지 알 수 있지.
+            //월은 May가져와서 뺴주면되겠지. day도 뺴주면되고..
+            const calcYear = checkTime.getFullYear() - 1970
+            if(calcYear > 0){  //0보다 크다면 1년 이상이구나 계산을 해주겠다.
+                time = calcYear + '년 전'; //1년이상게시물은 그냥 년도만 표시해주겠다.
+            } else{ //calcYear가 1년이 되지 않았다면 달만 얻어내면 되지
+                time = `${checkTime.getMonth()} 개월 전`;
+            }
+        }
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+    
+</body>
+</html>

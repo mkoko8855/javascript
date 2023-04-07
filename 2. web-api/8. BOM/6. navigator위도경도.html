@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        //성공 시 실행 할 콜백 함수
+        function success(position){ //그 사람의 정보를 얻을 수 있는 position이라는 객체가 올 것이다.
+            console.log()
+            console.log('위도 : ' + position.coord.latitude); //위도(가로줄), 경도(세로줄) 을 알고싶다. 
+            console.log('경도 : ' + position.coord.longitude); //위도(가로줄), 경도(세로줄) 을 알고싶다. 
+        }
+        //전달할거임
+
+        //실패 시 실행 할 콜백 함수
+        function fail(error) {
+            alert('위치 정보를 얻는 데 실패했습니다. 위치 정보를 승인해주세요!');
+            //사용자가 거절했을 때 전달되는 객체도 들여다보자
+            console.log(error);
+        }
+        //전달할거임
+
+
+
+        //즉시 실행 함수로 브라우저를 열자마자 실행시켜보자
+        (function(){
+            //윈도우는 최 상위이기에, 따로 표시할 필요가 없다
+            //바로 네이게이터 객체 지목하자
+            //getCurrentPosition()의 매개값으로는 함수 2개를 보내야 한다.
+            //뭐냐면, )위치 정보 승인 시 실행할 함수 , 실패 했을 시 실행할 함수)
+            navigator.geolocation.getCurrentPosition(success, fail); //현재 위치를 얻겠다 라는 getCuurentPositon함수이다. 
+        })();
+        //전달됨
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

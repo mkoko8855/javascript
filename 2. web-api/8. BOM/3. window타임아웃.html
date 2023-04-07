@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h3>5초 뒤에 함수가 하나 실행되는데, 이 버튼을 누르면 실행되지 않는다.</h3>
+        <button class="stop-time">취소!</button>
+
+
+    <script>
+
+        //타임아웃은 일부로 시간을 지연시킨다.
+        const func = setTimeout(() => {
+            alert('5초 후 경고창 출력!');
+        }, 5000); //지연시키고 나서 그 시간 뒤에 전달한 함수를 실행시켜주는 기능이다. > 일부로 지연하고자 하는 시간을 적어주자. 5000은 5초를 뜻한다.
+
+
+
+
+        //버튼하나 만들어보자 .  html부터 만들자
+        document.querySelector('.stop-time').onclick = function(){
+            clearTimeout(func); //그럼이제 stop버튼 클릭하면 clearTimeout이 발동된다.
+        }
+
+
+
+        
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+</html>
