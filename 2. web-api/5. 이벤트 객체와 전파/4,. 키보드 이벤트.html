@@ -34,6 +34,7 @@
                 //즉, 이벤트가 진행한 요소의 값을 msg의 텍스트로 넣을것이다.
                 
                 event.target.value=''; //마치 채팅창처럼 입력했던 값은 없어지고 새로운 값이 옴
+                
             } else if(event.key === 'Escape'){
                 $msg.textContent = ''; //ESC를 누르면 textContent를 빈 문자열로(즉, 전부삭제) 해주겠다.
             }

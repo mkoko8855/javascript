@@ -47,12 +47,8 @@
     # 새로운 과일을 추가 :
     <input type="text" class="text-box">
     <button id="add">추가</button>
-    
-
-
 
     <script>
-
 
         //li의 클릭 이벤트가 발생한다면 그곳의 value를 선택된 과일에 써줄거임
         //3개 전부에 이벤트 걸어줄 필요는 없다.
@@ -71,7 +67,8 @@
 
 
         //아래서 active선언했으니 이벤트 핸들러 함수를 만들자
-        function activate(event){
+        function activate(event){ //attribute방식 함수 선언인가?(용석글)
+
             //이벤트 발생 타겟이 특정 요소인지를 검증하자
             //ul에는 굳이 이벤트 발생할 필요없고 li에만 있으면 되니까 확인하려고 검증하는 것이다.
             if(!event.target.matches('#fruits > li')){ //지금 이벤트가 발생한 타겟이 #fruits > li 가 맞나요? 라고 물어보는 것이다. matches라는 함수는 맞으면 true, 맞지 않으면 false를 준다.
@@ -88,7 +85,7 @@
                 //클릭 된 곳에 active를 넣어주자
                 //그리고 기존에 active를 가지고 있는 요소에 클래스는 삭제.
             for(let $li of $liList){
-                //toggle 메서드의 두 번째 매개값으로 논리값을 전달할 수 있는데,
+                //toggle 메서드의 두 번째 매개값으론 논리값을 전달할 수 있는데,
                 //해당 논리값이 true로 판명이 나면 지정한 클래스를 추가하고,
                 //false로 판명이 나면 지정한 클래스를 삭제한다.
                 $li.classList.toggle('active', $li === event.target); //active라는 클래스가 없으면 추가, 있으면 삭제. > 근데 이걸론 부족하니 뒤에 매개값을 하나 더 주자(논리값을!)
@@ -118,7 +115,7 @@
            
             //그리고 메세지 영역에 이벤트가 발생한 과일 이름을 추가해주자
             $msg.textContent = event.target.id; 
-            //이러면 지금 이벤트가 발생된 요소가 가지고 있는 textContent를(value, id 이런거 써도됨) 텍스트로 집어 넣게 된다.\
+            //이러면 지금 이벤트가 발생된 요소가 가지고 있는 textContent를(value, id 이런거 써도됨) 텍스트로 집어 넣게 된다.
             //클릭 할떄마다 그 값으로 출력이 된다!
         };
 
