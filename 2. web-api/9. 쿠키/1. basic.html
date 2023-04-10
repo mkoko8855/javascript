@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--쿠키문법 : 쿠키클래스에서 쿠키 생성 > setter메서드로 쿠키의 속성 설정 > response객체에 쿠키 탑재 > 로컬환경에 저장 -->
+
+
+
+
+    <!--쿠키에는 이름을 지을 수 있고 이름에 해당하는 값을 지을 수있다. 객체의 프로퍼티처럼 키와 밸류마냥..-->
+
+    <!--쿠키이름을 입력받을 수 있도록 input창을 하나 만들어보자 -->
+
+    쿠키 이름 : <input type="text" id="cookieName"> <br>
+    쿠키 값 : <input type="text" id="cookieValue"> <br>
+    <button id="make">쿠키 생성!</button>
+
+    <hr>
+
+    찾을 쿠키 이름: <input type="text" id="cookieFind">
+    <button id="get">쿠키 찾기</button>
+
+
+
+
+
+
+    <!--이 버튼을 이벤트처리할거임(쿠키를만들어주는)-->
+
+
+    <script>
+
+        const $make = document.getElementById('make');
+        //이벤트걸자 여기다가
+        $make.addEventListener('click', createCookie); //creataeCookie라는 함수를 부를거야
+
+
+        //쿠키 생성하기
+        function createCookie(){
+            //사용자가 작성한 쿠키의 이름과 값을 먼저 취득 ㄱㄱ
+            //요소가 아닌 값을 불러고 하니 달러표시 없어야함
+            const name = document.getElementById('cookieName').value;
+            const value = document.getElementById('cookieValue').value;
+
+            //이름과 값 말고도 쿠키의 유효시간을 설정할 것이다.
+            //쿠키가 영원히 살아있을 순 없다.
+            //쿠키의 유효시간을 설정하지 않으면 정상적으로 동작하지 않는다.
+            //쿠키의 유효시간은 자유롭게 정하자
+
+            //일주일로 정했다면
+            const date = new Date(); //날짜객체 하나 만들어서
+            date.setDate(date.getDate() + 7); //현재 시간으로부터 7일 뒤로 세팅.
+            //아, 아직 쿠키에 적용안한 상태다. 날짜만 얻어온 상태임.
+
+            //그 다음, 쿠키에 저장할 문자열을 생성.
+            //근데 형식을 반드시 지켜줘야 한다.
+            //일단 변수하나 선언.
+            let cookie = ''; //빈 문자열은 따로따로써주기위해 선언했다.
+
+            //위에서 작성한 name과 value를 cookie라는 변수에 넣어줄 것이다.
+            cookie += name + '=' + value + ';'  //세미콜론 무조건 넣어줘야 한다. > 즉, 키=값; 형태로 설정.
+
+            //유효시간을 이제 설정할거임
+            cookie += 'expires=' + date.toUTCString(); //utcString은 세계표준협정시 기준으로 문자열로 표현하는 메서드이다. expires라는 걸 안붙이면 유효시간으로 동작을 안한다.
+
+
+            // +=는 cookie에 계속 이어붙인다는 뜻임
+
+
+            //이제 쿠키에 직접 적용을 해보자
+            //form과 마찬가지로 document(문서노드)의 하위객체라 바로 접근이 된다.
+            document.cookie = cookie;
+
+
+
+
+            //쿠키의 확인은 f12로 개발자모드 들어가서 tab에서 어플리케이션 들어가서 cookie를 클릭하면 된다.
+            //또는 console.log(document.cookie); 로 확인해도됨. 그리고 나서 콘솔창 눌러보면 뜸.
+       
+       
+       
+        }
+
+
+        //쿠키 확인하기.
+        //아무튼 쿠키 정보를 확인해볼수도 있어야 겠지?
+        //console.log말고도 내가 원하는 쿠키값만 따로 얻어낼 방법이 있다.
+        //위로가서 html 더 작성해보자. 쿠키를 찾는 기능도 구현해보자.
+        document.getElementById('get').addEventListener('click', getCookie);
+        
+        function getCookie(){ //전체쿠키는 document.cookie로도되는데, 내가 원하는 특정 쿠키를 찾아보자는 것이다. 타 사이트의 쿠키도 있을수도있고...그러니
+           
+            //사용자가 찾고하는 쿠키의 이름부터.
+            const find = document.getElementById('cookieFind').value;
+
+            //그리고 쿠키를 얻어오기 위해 형태가 어떻게 생겼는지 알아야하기 떄문에
+            //다시 한번 찍어보자
+            console.log(document.cookie);
+            //아까만든 choco=초코쿠키; apple=사과쿠키; merong=hahaha 가 출력됨을 알 수 있다.
+
+
+
+            //문자열을 구분자로 통해서 분할할 수 있게 도와주는 메서드가 뭐였지?
+            //split(';');   < document.cookie에 스플릿걸면 각각 분할된 하나의 정보를 배열로 받겠지?
+            const cookies = document.cookie.split(';'); //세미콜론으로 나눠줘~라고 얘기하고 있다.
+            //확인도해보자
+            console.log(cookies); //쿠키 찾기 누르면 확인가능.
+            //출력 결과 : ['22=22', ' choco=초코쿠키', ' apple=사과쿠키', ' merong=hahaha']
+
+
+
+            //이제 반복문 돌려서 찾으면됨
+            //근데 사용자가 입력한 이름의 쿠키가 없을땐 없다고 얘기도해줘야하니
+            //플래그 변수 하나 선언하자
+            let flag = false;
+            for(let c of cookies){ //우항은 반복문돌리고싶은 배열이름, 좌항은 받을이름.
+                //find라는 이름의 문자열이 c라는 배열 안에 포함이 되어 있는지에 대한 여부를 찾자 인덱스오브써서 -1이면 없는거잖아?
+                //그러나 인덱스오브말고 search를 쓰자
+                if(c.search(find) !== -1){ //전달한 값을 찾으면 찾은 위치를 반환한다. 얘도없으면 -1을 주도록. -1이 왔다면 없는거겠지. -1이 아니라면? 이라고 물어봤으니 쿠키를 찾은거겠지 찾았다면 뭐해줄꺼냐?
+                    //쿠키정보는 다알고있으니 지워볼까?
+                    //그냥 빈문자열 처리해버리면 된다.
+                    console.log(c.replace(find + '=', '')); //쿠키 이름을 위해 빈 문자열로 대체했다. (즉, 값만 확인하겠다).
+                    //그러면 쿠키이름말고 값만 나오겠지
+                    //찾았으니까
+                    flag = true;
+                    break; //찾았으니 플래그를 true로, break로 반복문끝~
+                }
+            }
+
+            if(!flag){
+                //플래그가 false라면? 이라고 물어보고있음
+                console.log('쿠키를 찾지 못했습니다.'); //없는 쿠키를 입력하면 없다고 얘기 해줘야 하니까.
+            }
+        }
+
+
+                //출력 결과 : choco라고 적고 쿠키찾기 누르면 초코쿠키만 출력됨을 알 수 있다.
+                //           abc라고 적으면 쿠키를 찾지 못했다고 출력된다~
+
+
+
+
+
+
+
+
+                
+        //쿠키 대한 문법 팁 :
+
+
+        //쿠키의 이름은 중복되지않음.
+        //쿠키를 만들겠다 라면, 기존의 존재하는 쿠키의 이름을 적으면 밸류가 바뀐다. 자바 맵처럼.
+
+
+        //쿠키를 삭제하고싶다면
+        //쿠키의 이름과 값을 expires로 미래시간을 지정했었는데,
+        //과거의 시간을 아무거나 입력하면 된다. 알아서 소멸한다.
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+</html>

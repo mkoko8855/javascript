@@ -84,6 +84,40 @@
 
 
 
+        //쌤 풀이
+        //dataset 이용해서 data-id의 값을 얻어올 수 있다.
+        //밑에보면 div로 이뤄져있는데,
+        //토글메뉴는 display none이니,
+        //active가 들어가면 블록이 매겨지는 것이다
+        //지금은 토글메뉴1이 보여질 것이다. 2와 3은 dispaly: none으로 숨겨져있겠지
+        
+        const $toggle1 = document.querySelector('.toggle');
+        //ul에 클릭이벤트 걸어보자
+        $toggle1.onclick = function(e){
+            if(!e.target.matches('.toggle > li')){
+                return;
+            }
+
+            //data- 이는 어떻게 얻는게 빠를까? dataset으로 얻자.
+            //간추려서 작성해보자
+            //일단 토글리스트를 얻어오자
+            const $toggleList = document.querySelectorAll('.toggle-menu');
+            //기존의 액티브 삭제하고 새로운 액티브를 넣어주기 위해 ALL을 사용했다.
+            //즉, 토글리스트는 3개가 온 것이다. (유사배열로)
+            //반복문을 이용하자 > 돌아다니면서 active있으면 지우고, 없으면 추가로..
+            //근데 추가도 무조건 하면안되고 이벤트가 발생한 곳 에다가 dataset.id를 끌고와서 걔한테 지목 해줘야한다.
+            //포이치랑 일반포문이랑 아무거나써도된다. 일반포문보자.
+            for(let $ele of [...$toggleList]){
+                $ele.classList.toggle('active', document.querySelector(e.target.dataset.id) === $ele ) //현재토글메뉴1에 액티브붙어있는데, 이제 지워질거다. 만약 2번메뉴 눌렀으면 2만 나와야하는데 3까지 같이 나와버린다. 3에도 액티브는 없었으니까. 이걸원하지않으니  document.querySelector(e.target.dataset.id) === $ele 이걸 붙여줬다.
+            }
+        };
+
+
+
+
+
+
+
 
 
 

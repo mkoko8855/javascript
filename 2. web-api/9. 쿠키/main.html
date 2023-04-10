@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script src="./popup.js" defer></script>
+
+
+</head>
+<body>
+    
+
+    <h2>메인 화면</h2>
+    <div>
+        메인 화면이라고 칩시다~
+    </div>
+
+    <script>
+
+        //팝업창 띄우기 위해 윈도우함수(BOM) 쓰자
+        //open메서드 통해서 열어줄수있었지.
+
+        // window.onload = function(){ //onload는 윈도우 창이 로딩된 후 바로 실행할 내용. 로딩이 완료되면 이 자바스크립트를 바로 실행하라는 이벤트.
+        //     window.open('popup.html', '메인팝업창', 'width=300, height=300, top=200, left=200');
+            
+        // };
+
+        //오늘 하루 이 창 열지 않기에 이벤트를 걸어서
+        //다시 메인페이지 접속했을 때 다시는 광고가 안나오게끔 처리해줘야지.
+        //popup.html로가자
+
+
+
+
+        //popup.js까지 작성 후,
+        //팝업이라는 쿠키가 존재하면 오늘 하루 광고안보겠다 라는 체크를 했다는 것이 들어나니,
+        //광고를 보여주지 않아야 겠지?
+        //팝업이라는 이름의 쿠키가 존재하는지 확인해서 그 결과가 true false에 따라
+        //window open함수를 부를지 말지 결정을 해주겠다 라는 것을 쓰자.
+        
+        window.onload = function(){
+            if(!getCookie('popup')){
+                window.open('popup.html', '메인팝업창', 'width=300, height=300, top=200, left=200');
+            }
+        }
+            //이제 pop.js에다가 getCookie라는 함수를 선언해줘야겠지~
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

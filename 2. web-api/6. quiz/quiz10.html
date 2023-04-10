@@ -58,6 +58,29 @@
 
 
 
+         
+        //부모한테 이벤트걸면 자식들도 이벤트 전파 받잖아
+        //대신 li에만 이벤트가 걸리도록 ul전체에 이벤트를 걸되, li가 아닌 구역은 이벤트가 발생하지 않도록.
+        //쌤풀이 시작
+        const $ul = document.querySelector('ul');
+        const $img = document.querySelector('.result img');
+        //부모에 이벤트걸자
+        $ul.addEventListener('click', e => {
+            //화살표함수하던가 펑션쓰던가..
+            //아무튼
+            //ul에는 굳이 발생안해도되니
+            if(!e.target.matches('ul > li > img')){
+                return;
+            }
+            
+            $img.setAttribute('src', e.target.getAttribute('src')); //src속성을 e.target의 getattribute로 떄려넣겠다.
+            //$img.setAttribute('src', e.target.src); 이거 써도됨.
+        });
+
+
+
+
+
 
     </script>
     

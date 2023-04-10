@@ -75,9 +75,33 @@
         });
 
         
+
+
+
+        //쌤풀이
+        const $list = document.querySelector('table tbody');
+        console.log($list);
        
+        $list.addEventListener('click', function(){
+            //화살표함수안쓰고 이렇게 작성해봤다.
+            //또한 매개변수를 선언하지 않으면 이벤트 객체를 못쓰냐? 아니다.
+            //event라는 이름으로 바로 사용이 가능하다.
+            //근데 웬만하면 이름을 붙여서 쓰는 게 더 편하다.
+            console.log(event.target); //이렇게도 동작이 된다는걸 알아만 두자.
 
 
+            //아무튼
+            //그럼 알려드렸으니 이벤트로써보자
+            if(!event.target.matches('button')){
+                //버튼이 아니야? 그럼 이벤트종료시켜
+                return;
+            }
+            //이제 삭제 버튼이 눌리면 그 삭제 버튼이 포함된 tr을 날려야겠지?
+            $list.removechild(e.target.parentNode.parentNode);
+            //event.target.parentNode.parentNode.remove(); 써도됨.
+            //td의 tr을 날려버리기위해 부모의 부모를 지목한 것이었다.
+        }); 
+           
 
 
 

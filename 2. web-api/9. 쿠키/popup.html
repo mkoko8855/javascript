@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script src="./popup.js"></script>
+
+
+
+</head>
+<body>
+    
+
+    <div>
+        <img src="../8. BOM/img/1.jpg" alt="pic" width="300px"> <br>
+        광고광고광고광고광고..........
+    </div>
+
+    오늘 하루 이 창 열지 않기 <input type="checkbox">
+
+
+
+    <!--체크박스 클릭하면 광고안뜨도록..-->
+
+
+    <script>
+
+        //오늘 하루 이 창 열지 않기에 이벤트를 걸어서
+        //다시 메인페이지 접속했을 때 다시는 광고가 안나오게끔 처리해줘야지.
+
+        const $box = document.querySelector('input[type="checkbox"]');
+
+        $box.onclick = function(){
+            //박스가 체크가 되었는지 확인하자
+            //박스 누르자마자 팝업꺼버리긴 할껀데 확인한번해보자
+            if($box.checked){ //체크박스에 체크가 되어 있다면
+                //쿠키를 만들어야겠지.(광고보기원하지않아!)
+                createCookie('popup'); //쿠키 생성함수를 호출하겠다. 밑에서 선언해줘야겠지~ 따로파일만들어서 로딩시켜보자 2-2로가자
+                //다음, 켜져있는 pop.html을 꺼줘야되잖아?
+                window.close(); //라는 메서드 쓰면 창을 닫을 수 있음
+            }
+        };
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+</html>
